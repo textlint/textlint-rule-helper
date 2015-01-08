@@ -14,6 +14,7 @@
   "scripts": {
     "build ": "6to5 src --out-dir lib  --source-maps-inline",
     "watch": "6to5 src --out-dir lib --watch --source-maps-inline",
+    "docs": "jsdoc2md -t template/README.template.md lib/textlint-rule-helper.js > README.md",
     "test": "npm run build && mocha test/*.js"
   },
   "directories": {
@@ -29,6 +30,7 @@
     "espower-6to5": "^1.0.1",
     "espower-loader": "^0.10.0",
     "intelli-espower-loader": "^0.5.0",
+    "jsdoc-to-markdown": "^0.5.9",
     "markdown-to-ast": "^2.2.0",
     "mocha": "^2.1.0",
     "power-assert": "^0.10.0",

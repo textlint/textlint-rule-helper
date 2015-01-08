@@ -1,5 +1,9 @@
 // LICENSE : MIT
 "use strict";
+/**
+ * RuleHelper is helper class for textlint.
+ * @class RuleHelper
+ */
 export class RuleHelper {
     /**
      * Initialize RuleHelper with RuleContext object.
