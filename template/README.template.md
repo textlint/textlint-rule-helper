@@ -18,7 +18,6 @@ npm run test
 
 {{heading-depth-set 2~}}
 {{#this}}
-  {{>body~}}
   {{>exported~}}
 {{/this}}
 

@@ -52,16 +52,7 @@ Return true if `node` is wrapped any one of node `types`.
 
 **Returns**: `boolean`  
 
-  Get parents of node.
-The parent nodes are returned in order from the closest parent to the outer ones.
-`node` is not contained in the results.
-
-**Params**
-
-- node `TxtNode` - the node is start point.  
-
-**Returns**: `Array.<TxtNode>`  
-<a name="RuleHelper#getParents"></a>
+  <a name="RuleHelper#getParents"></a>
 ####ruleHelper.getParents(node)
 Get parents of node.
 The parent nodes are returned in order from the closest parent to the outer ones.
@@ -73,15 +64,7 @@ The parent nodes are returned in order from the closest parent to the outer ones
 
 **Returns**: `Array.<TxtNode>`  
 
-  Return true if `node` is wrapped any one of node `types`.
-
-**Params**
-
-- node `TxtNode` - is target node  
-- types `Array.<string>` - are wrapped target node  
-
-**Returns**: `boolean`  
-<a name="RuleHelper#isChildNode"></a>
+  <a name="RuleHelper#isChildNode"></a>
 ####ruleHelper.isChildNode(node, types)
 Return true if `node` is wrapped any one of node `types`.
 
