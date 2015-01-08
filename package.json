@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "6to5": "^2.7.4",
-    "espower-6to5": "^1.0.1",
+    "espower-6to5": "git://github.com/azu/espower-6to5",
     "espower-loader": "^0.10.0",
     "intelli-espower-loader": "^0.5.0",
     "jsdoc-to-markdown": "^0.5.9",
