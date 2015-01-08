@@ -21,6 +21,7 @@ npm install textlint-rule-helper
 A rule for [textlint](https://github.com/azu/textlint "textlint").
 
 ```js
+var RuleHelper = require("textlint-rule-helper").RuleHelper;
 module.exports = function (context) {
     var helper = new RuleHelper(context);
     var exports = {}
