@@ -1,0 +1,37 @@
+{
+  "name": "textlint-rule-helper",
+  "description": "Helper for textlint rule.",
+  "version": "1.0.0",
+  "homepage": "https://github.com/azu/textlint-rule-helper/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azu/textlint-rule-helper.git"
+  },
+  "main": "lib/textlint-rule-helper.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build ": "6to5 src --out-dir lib  --source-maps-inline",
+    "watch": "6to5 src --out-dir lib --watch --source-maps-inline",
+    "test": "mocha test/*.js"
+  },
+  "directories": {
+    "test": "test/"
+  },
+  "author": "azu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/azu/textlint-rule-helper/issues"
+  },
+  "devDependencies": {
+    "6to5": "^2.7.4",
+    "espower-6to5": "^1.0.1",
+    "espower-loader": "^0.10.0",
+    "intelli-espower-loader": "^0.5.0",
+    "mocha": "^2.1.0",
+    "power-assert": "^0.10.0",
+    "source-map-support": "^0.2.8",
+    "textlint": "^1.4.3"
+  }
+}
