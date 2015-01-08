@@ -1,7 +1,7 @@
 {
   "name": "textlint-rule-helper",
   "description": "Helper for textlint rule.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "homepage": "https://github.com/azu/textlint-rule-helper/",
   "repository": {
     "type": "git",
