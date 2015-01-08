@@ -1,25 +1,54 @@
 # textlint-rule-helper
 
-- [ ] Write a project description
+This is helper library for creating [textlint](https://github.com/azu/textlint "textlint") rule.
 
 ## Installation
 
 ```
 npm install
+```
+
+## Usage - API
+
+{{heading-depth-set 2~}}
+{{#this}}
+  {{>exported~}}
+{{/this}}
+
+
+## Example
+
+A rule for [textlint](https://github.com/azu/textlint "textlint").
+
+```js
+module.exports = function (context) {
+    var helper = new RuleHelper(context);
+    var exports = {}
+    exports[context.Syntax.Str] = function(node){
+        // parent nodes is any one Link or Image.
+        if(helper.isChildNode(node, [context.Syntax.Link, context.Syntax.Image]){
+            return;
+        }
+        // get Parents
+        var parents = helper.getParents(node);
+        
+    }
+    return exports;
+}
+```
+
+## Development
+
+```
 # watch
 npm run watch
 # build
 npm run build
 # test
 npm run test
+# Generate README from tempalte
+npm run docs
 ```
-
-## Usage
-
-{{heading-depth-set 2~}}
-{{#this}}
-  {{>exported~}}
-{{/this}}
 
 ## Contributing
 
