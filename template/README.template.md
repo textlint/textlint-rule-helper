@@ -5,7 +5,7 @@ This is helper library for creating [textlint](https://github.com/azu/textlint "
 ## Installation
 
 ```
-npm install
+npm install textlint-rule-helper
 ```
 
 ## Usage - API
