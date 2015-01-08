@@ -14,7 +14,7 @@
   "scripts": {
     "build ": "6to5 src --out-dir lib  --source-maps-inline",
     "watch": "6to5 src --out-dir lib --watch --source-maps-inline",
-    "test": "mocha test/*.js"
+    "test": "npm run build && mocha test/*.js"
   },
   "directories": {
     "test": "test/"
