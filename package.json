@@ -12,7 +12,7 @@
     "lib"
   ],
   "scripts": {
-    "build ": "6to5 src --out-dir lib  --source-maps-inline",
+    "build": "6to5 src --out-dir lib  --source-maps-inline",
     "watch": "6to5 src --out-dir lib --watch --source-maps-inline",
     "docs": "jsdoc2md -t template/README.template.md lib/textlint-rule-helper.js > README.md",
     "test": "npm run build && mocha test/*.js"
