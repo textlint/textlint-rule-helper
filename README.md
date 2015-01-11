@@ -12,62 +12,37 @@ npm install textlint-rule-helper
 
 
   <a name="RuleHelper"></a>
-####class: RuleHelper
-**Members**
+###class: RuleHelper
 
 * [class: RuleHelper](#RuleHelper)
-  * [new RuleHelper()](#new_RuleHelper)
-  * [ruleHelper.getParents(node)](#RuleHelper#getParents)
-  * [ruleHelper.isChildNode(node, types)](#RuleHelper#isChildNode)
+  * [new RuleHelper()](#new_RuleHelper_new)
+  * _instance_
+    * [.getParents(node)](#RuleHelper#getParents) ⇒ <code>Array.&lt;TxtNode&gt;</code>
+    * [.isChildNode(node, types)](#RuleHelper#isChildNode) ⇒ <code>boolean</code>
 
-<a name="new_RuleHelper"></a>
-#####new RuleHelper()
+<a name="new_RuleHelper_new"></a>
+####new RuleHelper()
 RuleHelper is helper class for textlint.
 
 <a name="RuleHelper#getParents"></a>
-#####ruleHelper.getParents(node)
+####ruleHelper.getParents(node) ⇒ <code>Array.&lt;TxtNode&gt;</code>
 Get parents of node.
 The parent nodes are returned in order from the closest parent to the outer ones.
-`node` is not contained in the results.
+[node](node) is not contained in the results.
 
-**Params**
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| node | <code>TxtNode</code> | the node is start point. |
 
-- node `TxtNode` - the node is start point.  
-
-**Returns**: `Array.<TxtNode>`  
 <a name="RuleHelper#isChildNode"></a>
-#####ruleHelper.isChildNode(node, types)
-Return true if `node` is wrapped any one of node `types`.
+####ruleHelper.isChildNode(node, types) ⇒ <code>boolean</code>
+Return true if `node` is wrapped any one of node [types](types).
 
-**Params**
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| node | <code>TxtNode</code> | is target node |
+| types | <code>Array.&lt;string&gt;</code> | are wrapped target node |
 
-- node `TxtNode` - is target node  
-- types `Array.<string>` - are wrapped target node  
-
-**Returns**: `boolean`  
-
-  <a name="RuleHelper#getParents"></a>
-####ruleHelper.getParents(node)
-Get parents of node.
-The parent nodes are returned in order from the closest parent to the outer ones.
-`node` is not contained in the results.
-
-**Params**
-
-- node `TxtNode` - the node is start point.  
-
-**Returns**: `Array.<TxtNode>`  
-
-  <a name="RuleHelper#isChildNode"></a>
-####ruleHelper.isChildNode(node, types)
-Return true if `node` is wrapped any one of node `types`.
-
-**Params**
-
-- node `TxtNode` - is target node  
-- types `Array.<string>` - are wrapped target node  
-
-**Returns**: `boolean`  
 
 
 
