@@ -11,21 +11,35 @@ npm install textlint-rule-helper
 ## Usage - API
 
 
-  <a name="RuleHelper"></a>
-###class: RuleHelper
+  <a name="module_textlint-rule-helper"></a>
+###textlint-rule-helper
+**Example**  
+```js
+var RuleHelper = require("textlint-rule-helper").RuleHelper;
+```
 
-* [class: RuleHelper](#RuleHelper)
-  * [new RuleHelper()](#new_RuleHelper_new)
+* [textlint-rule-helper](#module_textlint-rule-helper)
+  * [class: ~RuleHelper](#module_textlint-rule-helper..RuleHelper)
+    * [new RuleHelper()](#new_module_textlint-rule-helper..RuleHelper_new)
+    * _instance_
+      * [.getParents(node)](#module_textlint-rule-helper..RuleHelper#getParents) ⇒ <code>Array.&lt;TxtNode&gt;</code>
+      * [.isChildNode(node, types)](#module_textlint-rule-helper..RuleHelper#isChildNode) ⇒ <code>boolean</code>
+
+<a name="module_textlint-rule-helper..RuleHelper"></a>
+####class: textlint-rule-helper~RuleHelper
+
+* [class: ~RuleHelper](#module_textlint-rule-helper..RuleHelper)
+  * [new RuleHelper()](#new_module_textlint-rule-helper..RuleHelper_new)
   * _instance_
-    * [.getParents(node)](#RuleHelper#getParents) ⇒ <code>Array.&lt;TxtNode&gt;</code>
-    * [.isChildNode(node, types)](#RuleHelper#isChildNode) ⇒ <code>boolean</code>
+    * [.getParents(node)](#module_textlint-rule-helper..RuleHelper#getParents) ⇒ <code>Array.&lt;TxtNode&gt;</code>
+    * [.isChildNode(node, types)](#module_textlint-rule-helper..RuleHelper#isChildNode) ⇒ <code>boolean</code>
 
-<a name="new_RuleHelper_new"></a>
-####new RuleHelper()
+<a name="new_module_textlint-rule-helper..RuleHelper_new"></a>
+#####new RuleHelper()
 RuleHelper is helper class for textlint.
 
-<a name="RuleHelper#getParents"></a>
-####ruleHelper.getParents(node) ⇒ <code>Array.&lt;TxtNode&gt;</code>
+<a name="module_textlint-rule-helper..RuleHelper#getParents"></a>
+#####ruleHelper.getParents(node) ⇒ <code>Array.&lt;TxtNode&gt;</code>
 Get parents of node.
 The parent nodes are returned in order from the closest parent to the outer ones.
 [node](node) is not contained in the results.
@@ -34,8 +48,8 @@ The parent nodes are returned in order from the closest parent to the outer ones
 | ----- | ---- | ----------- |
 | node | <code>TxtNode</code> | the node is start point. |
 
-<a name="RuleHelper#isChildNode"></a>
-####ruleHelper.isChildNode(node, types) ⇒ <code>boolean</code>
+<a name="module_textlint-rule-helper..RuleHelper#isChildNode"></a>
+#####ruleHelper.isChildNode(node, types) ⇒ <code>boolean</code>
 Return true if `node` is wrapped any one of node [types](types).
 
 | Param | Type | Description |

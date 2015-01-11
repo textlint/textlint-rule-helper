@@ -1,8 +1,15 @@
 // LICENSE : MIT
 "use strict";
 /**
+@module textlint-rule-helper
+@example
+var RuleHelper = require("textlint-rule-helper").RuleHelper;
+*/
+
+/**
  * RuleHelper is helper class for textlint.
  * @class RuleHelper
+ * @alias module:textlint-rule-helper
  */
 export class RuleHelper {
     /**

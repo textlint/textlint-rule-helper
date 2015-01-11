@@ -11,9 +11,9 @@ npm install textlint-rule-helper
 ## Usage - API
 
 {{optionSet "heading-depth" 3 ~}}
-{{#class name="RuleHelper"}}
+{{#module name="textlint-rule-helper"}}
   {{>docs~}}
-{{/class}}
+{{/module}}
 
 
 ## Example
