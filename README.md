@@ -11,57 +11,7 @@ npm install textlint-rule-helper
 ## Usage - API
 
 
-  <a name="module_textlint-rule-helper"></a>
-###textlint-rule-helper
-**Example**  
-```js
-var RuleHelper = require("textlint-rule-helper").RuleHelper;
-```
-
-* [textlint-rule-helper](#module_textlint-rule-helper)
-  * [class: ~RuleHelper](#module_textlint-rule-helper..RuleHelper)
-    * [new RuleHelper()](#new_module_textlint-rule-helper..RuleHelper_new)
-    * _instance_
-      * [.getParents(node)](#module_textlint-rule-helper..RuleHelper#getParents) ⇒ <code>Array.&lt;TxtNode&gt;</code>
-      * [.isChildNode(node, types)](#module_textlint-rule-helper..RuleHelper#isChildNode) ⇒ <code>boolean</code>
-
-<a name="module_textlint-rule-helper..RuleHelper"></a>
-####class: textlint-rule-helper~RuleHelper
-
-* [class: ~RuleHelper](#module_textlint-rule-helper..RuleHelper)
-  * [new RuleHelper()](#new_module_textlint-rule-helper..RuleHelper_new)
-  * _instance_
-    * [.getParents(node)](#module_textlint-rule-helper..RuleHelper#getParents) ⇒ <code>Array.&lt;TxtNode&gt;</code>
-    * [.isChildNode(node, types)](#module_textlint-rule-helper..RuleHelper#isChildNode) ⇒ <code>boolean</code>
-
-<a name="new_module_textlint-rule-helper..RuleHelper_new"></a>
-#####new RuleHelper()
-RuleHelper is helper class for textlint.
-
-<a name="module_textlint-rule-helper..RuleHelper#getParents"></a>
-#####ruleHelper.getParents(node) ⇒ <code>Array.&lt;TxtNode&gt;</code>
-Get parents of node.
-The parent nodes are returned in order from the closest parent to the outer ones.
-[node](node) is not contained in the results.
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| node | <code>TxtNode</code> | the node is start point. |
-
-<a name="module_textlint-rule-helper..RuleHelper#isChildNode"></a>
-#####ruleHelper.isChildNode(node, types) ⇒ <code>boolean</code>
-Return true if `node` is wrapped any one of node [types](types).
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| node | <code>TxtNode</code> | is target node |
-| types | <code>Array.&lt;string&gt;</code> | are wrapped target node |
-
-
-
-
-## Example
-
+  **Example**  
 A rule for [textlint](https://github.com/azu/textlint "textlint").
 
 ```js
@@ -81,6 +31,53 @@ module.exports = function (context) {
     return exports;
 }
 ```
+
+* [textlint-rule-helper](#module_textlint-rule-helper)
+  * [.RuleHelper](#module_textlint-rule-helper.RuleHelper) → <code>RuleHelper</code>
+  * [class: ~RuleHelper](#module_textlint-rule-helper..RuleHelper)
+    * [new RuleHelper()](#new_module_textlint-rule-helper..RuleHelper_new)
+    * _instance_
+      * [.getParents(node)](#module_textlint-rule-helper..RuleHelper#getParents) ⇒ <code>[Array.&lt;TxtNode&gt;](https://github.com/azu/textlint)</code>
+      * [.isChildNode(node, types)](#module_textlint-rule-helper..RuleHelper#isChildNode) ⇒ <code>boolean</code>
+
+<a name="module_textlint-rule-helper.RuleHelper"></a>
+####textlint-rule-helper.RuleHelper → <code>RuleHelper</code>
+Exposes the RuleHelper class
+
+<a name="module_textlint-rule-helper..RuleHelper"></a>
+####class: textlint-rule-helper~RuleHelper
+
+* [class: ~RuleHelper](#module_textlint-rule-helper..RuleHelper)
+  * [new RuleHelper()](#new_module_textlint-rule-helper..RuleHelper_new)
+  * _instance_
+    * [.getParents(node)](#module_textlint-rule-helper..RuleHelper#getParents) ⇒ <code>[Array.&lt;TxtNode&gt;](https://github.com/azu/textlint)</code>
+    * [.isChildNode(node, types)](#module_textlint-rule-helper..RuleHelper#isChildNode) ⇒ <code>boolean</code>
+
+<a name="new_module_textlint-rule-helper..RuleHelper_new"></a>
+#####new RuleHelper()
+RuleHelper is helper class for textlint.
+
+<a name="module_textlint-rule-helper..RuleHelper#getParents"></a>
+#####ruleHelper.getParents(node) ⇒ <code>[Array.&lt;TxtNode&gt;](https://github.com/azu/textlint)</code>
+Get parents of node.
+The parent nodes are returned in order from the closest parent to the outer ones.
+[node](node) is not contained in the results.
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| node | <code>[TxtNode](https://github.com/azu/textlint)</code> | the node is start point. |
+
+<a name="module_textlint-rule-helper..RuleHelper#isChildNode"></a>
+#####ruleHelper.isChildNode(node, types) ⇒ <code>boolean</code>
+Return true if `node` is wrapped any one of node [types](types).
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| node | <code>[TxtNode](https://github.com/azu/textlint)</code> | is target node |
+| types | <code>Array.&lt;string&gt;</code> | are wrapped target node |
+
+
+
 
 ## Development
 
