@@ -27,13 +27,13 @@
   },
   "devDependencies": {
     "6to5": "^2.7.4",
-    "mocha": "^2.1.0",
-    "espower-6to5": "^1.0.3",
+    "espower-6to5": "^1.1.0",
     "jsdoc-to-markdown": "^0.5.9",
     "markdown-to-ast": "^2.2.0",
+    "mocha": "^2.1.0",
     "power-assert": "^0.10.0",
     "source-map-support": "^0.2.8",
-    "textlint": "^1.4.3",
+    "textlint": "^2.0.2",
     "txt-ast-traverse": "^1.2.0"
   }
 }
