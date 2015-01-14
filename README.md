@@ -31,14 +31,12 @@ module.exports = function (context) {
     return exports;
 }
 ```
-
 * [textlint-rule-helper](#module_textlint-rule-helper)
-  * [.RuleHelper](#module_textlint-rule-helper.RuleHelper) → <code>RuleHelper</code>
-  * [class: ~RuleHelper](#module_textlint-rule-helper..RuleHelper)
+  * [textlint-rule-helper.RuleHelper](#module_textlint-rule-helper.RuleHelper) → <code>RuleHelper</code>
+  * [class: textlint-rule-helper~RuleHelper](#module_textlint-rule-helper..RuleHelper)
     * [new RuleHelper()](#new_module_textlint-rule-helper..RuleHelper_new)
-    * _instance_
-      * [.getParents(node)](#module_textlint-rule-helper..RuleHelper#getParents) ⇒ <code>[Array.&lt;TxtNode&gt;](https://github.com/azu/textlint)</code>
-      * [.isChildNode(node, types)](#module_textlint-rule-helper..RuleHelper#isChildNode) ⇒ <code>boolean</code>
+    * [ruleHelper.getParents(node)](#module_textlint-rule-helper..RuleHelper#getParents) ⇒ <code>[Array.&lt;TxtNode&gt;](https://github.com/azu/textlint)</code>
+    * [ruleHelper.isChildNode(node, types)](#module_textlint-rule-helper..RuleHelper#isChildNode) ⇒ <code>boolean</code>
 
 <a name="module_textlint-rule-helper.RuleHelper"></a>
 ####textlint-rule-helper.RuleHelper → <code>RuleHelper</code>
@@ -46,12 +44,10 @@ Exposes the RuleHelper class
 
 <a name="module_textlint-rule-helper..RuleHelper"></a>
 ####class: textlint-rule-helper~RuleHelper
-
-* [class: ~RuleHelper](#module_textlint-rule-helper..RuleHelper)
+* [class: textlint-rule-helper~RuleHelper](#module_textlint-rule-helper..RuleHelper)
   * [new RuleHelper()](#new_module_textlint-rule-helper..RuleHelper_new)
-  * _instance_
-    * [.getParents(node)](#module_textlint-rule-helper..RuleHelper#getParents) ⇒ <code>[Array.&lt;TxtNode&gt;](https://github.com/azu/textlint)</code>
-    * [.isChildNode(node, types)](#module_textlint-rule-helper..RuleHelper#isChildNode) ⇒ <code>boolean</code>
+  * [ruleHelper.getParents(node)](#module_textlint-rule-helper..RuleHelper#getParents) ⇒ <code>[Array.&lt;TxtNode&gt;](https://github.com/azu/textlint)</code>
+  * [ruleHelper.isChildNode(node, types)](#module_textlint-rule-helper..RuleHelper#isChildNode) ⇒ <code>boolean</code>
 
 <a name="new_module_textlint-rule-helper..RuleHelper_new"></a>
 #####new RuleHelper()
