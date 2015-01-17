@@ -33,11 +33,10 @@ module.exports = function (context) {
 ```
 
 * [textlint-rule-helper](#module_textlint-rule-helper)
-  * [.RuleHelper](#module_textlint-rule-helper.RuleHelper) → <code>RuleHelper</code>
-  * [class: ~RuleHelper](#module_textlint-rule-helper..RuleHelper)
+  * class: [.RuleHelper](#module_textlint-rule-helper..RuleHelper)
     * [new RuleHelper()](#new_module_textlint-rule-helper..RuleHelper_new)
-    * [ruleHelper.getParents(node)](#module_textlint-rule-helper..RuleHelper#getParents) ⇒ <code>[Array.&lt;TxtNode&gt;](https://github.com/azu/textlint)</code>
-    * [ruleHelper.isChildNode(node, types)](#module_textlint-rule-helper..RuleHelper#isChildNode) ⇒ <code>boolean</code>
+      * [.getParents(node)](#module_textlint-rule-helper..RuleHelper#getParents) ⇒ <code>[Array.&lt;TxtNode&gt;](https://github.com/azu/textlint)</code>
+      * [.isChildNode(node, types)](#module_textlint-rule-helper..RuleHelper#isChildNode) ⇒ <code>boolean</code>
 
 <a name="module_textlint-rule-helper.RuleHelper"></a>
 ####textlint-rule-helper.RuleHelper → <code>RuleHelper</code>
