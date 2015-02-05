@@ -26,8 +26,8 @@
     "url": "https://github.com/azu/textlint-rule-helper/issues"
   },
   "devDependencies": {
-    "6to5": "^2.7.4",
-    "espower-6to5": "^1.1.0",
+    "6to5": "^3.3.12",
+    "espower-6to5": "^1.2.1",
     "jsdoc-to-markdown": "^0.5.9",
     "markdown-to-ast": "^2.2.0",
     "mocha": "^2.1.0",
