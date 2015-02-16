@@ -1,1 +1,1 @@
---compilers js:espower-6to5/guess
+--compilers js:espower-babel/guess
