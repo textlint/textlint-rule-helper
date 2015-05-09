@@ -6,7 +6,7 @@ support.install();
 import {parse,Syntax} from "markdown-to-ast"
 import {traverse} from "txt-ast-traverse"
 import assert from 'power-assert'
-import {RuleHelper} from "../lib/textlint-rule-helper.js";
+import {RuleHelper} from "../src/textlint-rule-helper";
 import {textlint} from "textlint"
 describe("textlint-rule-helper-test", function () {
     afterEach(function () {
