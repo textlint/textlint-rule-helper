@@ -1,6 +1,6 @@
 # textlint-rule-helper
 
-This is helper library for creating [textlint](https://github.com/azu/textlint "textlint") rule.
+This is helper library for creating [textlint](https://github.com/textlint/textlint "textlint") rule.
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install textlint-rule-helper
 
 ## Example
 
-A rule for [textlint](https://github.com/azu/textlint "textlint").
+A rule for [textlint](https://github.com/textlint/textlint "textlint").
 
 ```js
 var RuleHelper = require("textlint-rule-helper").RuleHelper;
