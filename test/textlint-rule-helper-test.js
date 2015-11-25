@@ -1,8 +1,5 @@
 // LICENSE : MIT
 "use strict";
-import support from 'source-map-support'
-support.install();
-
 import {parse,Syntax} from "markdown-to-ast"
 import {traverse} from "txt-ast-traverse"
 import assert from 'power-assert'
@@ -27,8 +24,9 @@ describe("textlint-rule-helper-test", function () {
                         }
                     }
                 });
-                textlint.lintMarkdown(text);
-                assert(parents.length === 0);
+                return textlint.lintMarkdown(text).then(()=> {
+                    assert(parents.length === 0);
+                });
             });
 
         });
@@ -45,8 +43,9 @@ describe("textlint-rule-helper-test", function () {
                     }
                 }
             });
-            textlint.lintMarkdown(text);
-            assert(parents.length === 2);
+            return textlint.lintMarkdown(text).then(() => {
+                assert(parents.length === 2);
+            });
         });
     });
     describe("#isChildNode(node, parentTypes)", ()=> {
@@ -64,8 +63,9 @@ describe("textlint-rule-helper-test", function () {
                         }
                     }
                 });
-                textlint.lintMarkdown(text);
-                assert.ok(result);
+                return textlint.lintMarkdown(text).then(()=> {
+                    assert.ok(result);
+                });
             });
         });
         context("when the parent node is Str, the child node is Paragraph", ()=> {
@@ -82,8 +82,9 @@ describe("textlint-rule-helper-test", function () {
                         }
                     }
                 });
-                textlint.lintMarkdown(text);
-                assert.ok(!result);
+                return textlint.lintMarkdown(text).then(()=> {
+                    assert.ok(!result);
+                });
             });
         });
     });

@@ -9,7 +9,8 @@
   },
   "main": "lib/textlint-rule-helper.js",
   "files": [
-    "lib"
+    "lib",
+    "src"
   ],
   "scripts": {
     "build": "babel src --out-dir lib --source-maps inline",
@@ -33,7 +34,7 @@
     "mocha": "^2.1.0",
     "power-assert": "^0.11.0",
     "source-map-support": "^0.2.8",
-    "textlint": "^3.1.2",
+    "textlint": "^5.0.2",
     "txt-ast-traverse": "^1.2.0"
   }
 }
