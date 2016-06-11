@@ -13,7 +13,7 @@
     "src"
   ],
   "scripts": {
-    "build": "babel src --out-dir lib --source-maps inline",
+    "build": "NODE_ENV=production babel src --out-dir lib --source-maps inline",
     "watch": "babel src --out-dir lib --watch --source-maps inline",
     "docs": "jsdoc2md -t template/README.template.md lib/textlint-rule-helper.js > README.md",
     "test": "npm run build && mocha test/*.js"
@@ -36,5 +36,8 @@
     "source-map-support": "^0.2.8",
     "textlint": "^5.0.2",
     "txt-ast-traverse": "^1.2.0"
+  },
+  "dependencies": {
+    "unist-util-visit": "^1.1.0"
   }
 }
