@@ -1,8 +1,8 @@
 // LICENSE : MIT
 "use strict";
 import RuleHelper from "./textlint-rule-helper";
-import IgnoreManager from "./IgnoreNodeManger"
+import IgnoreNodeManger from "./IgnoreNodeManger"
 module.exports = {
-    IgnoreManager,
+    IgnoreNodeManger,
     RuleHelper
 };

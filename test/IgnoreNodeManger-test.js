@@ -28,7 +28,7 @@ describe("IgnoreNodeManger", function () {
                 });
                 return textlint.lintMarkdown(text).then(()=> {
                     assert.ok(isIgnored);
-                    assert.deepEqual(ignoreManager._ignoredRangeList, [[4, 10]]);
+                    assert.deepEqual(ignoreManager["_ignoredRangeList"], [[4, 10]]);
 
                 });
             });

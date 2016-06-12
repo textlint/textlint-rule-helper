@@ -5,7 +5,7 @@ const visit = require('unist-util-visit');
  * Ignore node manager that manager ignored ranges.
  *
  */
-export default class IgnoreManger {
+export default class IgnoreNodeManger {
     constructor() {
         /**
          * @type {[number,number][]}
@@ -52,7 +52,7 @@ export default class IgnoreManger {
 
     /**
      * add node to ignore range list
-     * @param {Object} node
+     * @param {TxtNode} node
      */
     ignore(node) {
         this.ignoreRange(node.range);
@@ -69,7 +69,7 @@ export default class IgnoreManger {
     /**
      * ignore children node of `node`,
      * if the children node has the type that is included in `ignoredNodeTypes`.
-     * @param {Node} targetNode
+     * @param {TxtNode} targetNode
      * @param {string[]} ignoredNodeTypes
      */
     ignoreChildrenByTypes(targetNode, ignoredNodeTypes) {

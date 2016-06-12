@@ -10,66 +10,58 @@ npm install textlint-rule-helper
 
 ## Usage - API
 
+### class RuleHelper
 
-  <a name="RuleHelper"></a>
-####class: RuleHelper
-**Members**
+#### ruleHelper.getParents(node) : TxtNode[]
 
-* [class: RuleHelper](#RuleHelper)
-  * [new RuleHelper()](#new_RuleHelper)
-  * [ruleHelper.getParents(node)](#RuleHelper#getParents)
-  * [ruleHelper.isChildNode(node, types)](#RuleHelper#isChildNode)
-
-<a name="new_RuleHelper"></a>
-#####new RuleHelper()
-RuleHelper is helper class for textlint.
-
-<a name="RuleHelper#getParents"></a>
-#####ruleHelper.getParents(node)
 Get parents of node.
 The parent nodes are returned in order from the closest parent to the outer ones.
 `node` is not contained in the results.
 
 **Params**
 
-- node `TxtNode` - the node is start point.  
+- node `TxtNode` - the node is start point.
 
-**Returns**: `Array.<TxtNode>`  
-<a name="RuleHelper#isChildNode"></a>
-#####ruleHelper.isChildNode(node, types)
+####ruleHelper.isChildNode(node, types): boolean
+
 Return true if `node` is wrapped any one of node `types`.
 
 **Params**
 
-- node `TxtNode` - is target node  
-- types `Array.<string>` - are wrapped target node  
+- node `TxtNode` - is target node
+- types `Array.<string>` - are wrapped target node
 
-**Returns**: `boolean`  
+### class IgnoreNodeManger
 
-  <a name="RuleHelper#getParents"></a>
-####ruleHelper.getParents(node)
-Get parents of node.
-The parent nodes are returned in order from the closest parent to the outer ones.
-`node` is not contained in the results.
+#### ignore(node): void
 
-**Params**
+Add the range of `node` to ignoring range list.
 
-- node `TxtNode` - the node is start point.  
+#### ignoreRange(range): void
 
-**Returns**: `Array.<TxtNode>`  
+Add the `range` to ignoring range list
 
-  <a name="RuleHelper#isChildNode"></a>
-####ruleHelper.isChildNode(node, types)
-Return true if `node` is wrapped any one of node `types`.
+#### ignoreChildrenByTypes(targetNode, ignoredNodeTypes): void
+
+if the children node has the type that is included in `ignoredNodeTypes`,
+Add range of children node of `node` to ignoring range list,
 
 **Params**
 
-- node `TxtNode` - is target node  
-- types `Array.<string>` - are wrapped target node  
+-  targetNode `TxtNode` - target node
+- `Array.<string>` - are node types for ignoring
 
-**Returns**: `boolean`  
+#### isIgnoredIndex(index): boolean
 
+If the `index` is included in ignoring range list, return true.
 
+#### isIgnoredRange(range): boolean
+
+If the `range` is included in ignoring range list, return true.
+
+#### isIgnored(node): boolean
+
+If the `range` of `node` is included in ignoring range list, return true.
 
 ## Example
 
@@ -77,9 +69,18 @@ A rule for [textlint](https://github.com/textlint/textlint "textlint").
 
 ```js
 var RuleHelper = require("textlint-rule-helper").RuleHelper;
+var IgnoreNodeManger = require("textlint-rule-helper").IgnoreNodeManger;
 module.exports = function (context) {
     var helper = new RuleHelper(context);
+    var ignoreNodeManager = new IgnoreNodeManger()
     var exports = {}
+    var reportingErrors = [];
+    exports[context.Syntax.Paragraph] = function(node){
+        // Add `Code` node to ignoring list
+        ignoreNodeManager.ignoreChildrenByTypes(node, [context.Syntax.Code])
+        // do something
+        reportingErrors.push(node, ruleError);
+    };
     exports[context.Syntax.Str] = function(node){
         // parent nodes is any one Link or Image.
         if(helper.isChildNode(node, [context.Syntax.Link, context.Syntax.Image]){
@@ -87,7 +88,15 @@ module.exports = function (context) {
         }
         // get Parents
         var parents = helper.getParents(node);
-        
+    }
+    [Syntax.Document + ":exit"](){
+        reportingErrors.forEach(function(node, ruleError){
+            // if the error is ignored, don't report
+            if(ignoreNodeManager.isIgnored(node)){
+                return;
+            }
+            // report actual
+        });
     }
     return exports;
 }
