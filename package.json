@@ -13,9 +13,8 @@
     "src"
   ],
   "scripts": {
-    "build": "babel src --out-dir lib --source-maps inline",
+    "build": "NODE_ENV=production babel src --out-dir lib --source-maps inline",
     "watch": "babel src --out-dir lib --watch --source-maps inline",
-    "docs": "jsdoc2md -t template/README.template.md lib/textlint-rule-helper.js > README.md",
     "test": "npm run build && mocha test/*.js"
   },
   "directories": {
@@ -27,14 +26,17 @@
     "url": "https://github.com/textlint/textlint-rule-helper/issues"
   },
   "devDependencies": {
-    "babel": "^5.2.17",
-    "espower-babel": "^3.0.0",
-    "jsdoc-to-markdown": "^1.1.1",
+    "babel-cli": "^6.10.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-power-assert": "^1.0.0",
+    "babel-register": "^6.9.0",
     "markdown-to-ast": "^3.0.5",
     "mocha": "^2.1.0",
-    "power-assert": "^0.11.0",
-    "source-map-support": "^0.2.8",
-    "textlint": "^5.0.2",
+    "power-assert": "^1.4.1",
+    "textlint": "^6.11.1",
     "txt-ast-traverse": "^1.2.0"
+  },
+  "dependencies": {
+    "unist-util-visit": "^1.1.0"
   }
 }

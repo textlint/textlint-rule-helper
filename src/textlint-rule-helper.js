@@ -4,7 +4,7 @@
  * RuleHelper is helper class for textlint.
  * @class RuleHelper
  */
-export class RuleHelper {
+export default class RuleHelper {
     /**
      * Initialize RuleHelper with RuleContext object.
      * @param {RuleContext} ruleContext the ruleContext is context object of the rule.
