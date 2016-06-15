@@ -16,7 +16,7 @@
     "build": "NODE_ENV=production babel src --out-dir lib --source-maps inline",
     "watch": "babel src --out-dir lib --watch --source-maps inline",
     "test": "mocha test/*.js",
-    "prepublish": "gitbook install"
+    "prepublish": "npm run build"
   },
   "directories": {
     "test": "test/"
