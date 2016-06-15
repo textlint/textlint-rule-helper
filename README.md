@@ -41,9 +41,17 @@ You can manager ignoring range in texts.
 
 Add the range of `node` to ignoring range list.
 
+**Params**
+
+-  node `TxtNode` - target node
+
 #### ignoreRange(range): void
 
 Add the `range` to ignoring range list
+
+**Params**
+
+- range `[number, number]`
 
 #### ignoreChildrenByTypes(targetNode, ignoredNodeTypes): void
 
@@ -52,20 +60,32 @@ Add range of children node of `node` to ignoring range list,
 
 **Params**
 
--  targetNode `TxtNode` - target node
-- `Array.<string>` - are node types for ignoring
+- targetNode `TxtNode` - target node
+- ignoredNodeTypes `Array.<string>` - are node types for ignoring
 
 #### isIgnoredIndex(index): boolean
 
 If the `index` is included in ignoring range list, return true.
 
+**Params**
+
+-  index `number` - index value start with 0
+
 #### isIgnoredRange(range): boolean
 
 If the `range` is included in ignoring range list, return true.
 
+**Params**
+
+- range `[number, number]`
+
 #### isIgnored(node): boolean
 
 If the `range` of `node` is included in ignoring range list, return true.
+
+**Params**
+
+-  node `TxtNode` - target node
 
 ## Example
 
@@ -106,6 +126,13 @@ module.exports = function (context) {
 }
 ```
 
+## Use-Case
+
+You can see real use-case of this helper library.
+
+- [textlint/rule-advanced.md at master · textlint/textlint](https://github.com/textlint/textlint/blob/master/docs/rule-advanced.md "textlint/rule-advanced.md at master · textlint/textlint")
+- [azu/analyze-desumasu-dearu: 文の敬体(ですます調)、常体(である調)を解析するJavaScriptライブラリ](https://github.com/azu/analyze-desumasu-dearu "azu/analyze-desumasu-dearu: 文の敬体(ですます調)、常体(である調)を解析するJavaScriptライブラリ")
+
 ## Development
 
 ```
@@ -115,8 +142,6 @@ npm run watch
 npm run build
 # test
 npm run test
-# Generate README from tempalte
-npm run docs
 ```
 
 ## Contributing
