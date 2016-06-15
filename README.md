@@ -12,6 +12,8 @@ npm install textlint-rule-helper
 
 ### class RuleHelper
 
+Helper for traversing TxtAST.
+
 #### ruleHelper.getParents(node) : TxtNode[]
 
 Get parents of node.
@@ -32,6 +34,8 @@ Return true if `node` is wrapped any one of node `types`.
 - types `Array.<string>` - are wrapped target node
 
 ### class IgnoreNodeManger
+
+You can manager ignoring range in texts.
 
 #### ignore(node): void
 
