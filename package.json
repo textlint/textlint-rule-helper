@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/textlint/textlint-rule-helper.git"
   },
-  "main": "lib/textlint-rule-helper.js",
+  "main": "lib/index.js",
   "files": [
     "lib",
     "src"
@@ -15,7 +15,8 @@
   "scripts": {
     "build": "NODE_ENV=production babel src --out-dir lib --source-maps inline",
     "watch": "babel src --out-dir lib --watch --source-maps inline",
-    "test": "npm run build && mocha test/*.js"
+    "test": "mocha test/*.js",
+    "prepublish": "gitbook install"
   },
   "directories": {
     "test": "test/"
