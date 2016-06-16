@@ -131,7 +131,11 @@ module.exports = function (context) {
 You can see real use-case of this helper library.
 
 - [textlint/rule-advanced.md at master · textlint/textlint](https://github.com/textlint/textlint/blob/master/docs/rule-advanced.md "textlint/rule-advanced.md at master · textlint/textlint")
-- [azu/analyze-desumasu-dearu: 文の敬体(ですます調)、常体(である調)を解析するJavaScriptライブラリ](https://github.com/azu/analyze-desumasu-dearu "azu/analyze-desumasu-dearu: 文の敬体(ですます調)、常体(である調)を解析するJavaScriptライブラリ")
+- [textlint-rule-no-mix-dearu-desumasu](https://github.com/azu/textlint-rule-no-mix-dearu-desumasu "textlint-rule-no-mix-dearu-desumasu")
+
+## ChangeLog
+
+- [Releases · textlint/textlint-rule-helper](https://github.com/textlint/textlint-rule-helper/releases "Releases · textlint/textlint-rule-helper")
 
 ## Development
 
