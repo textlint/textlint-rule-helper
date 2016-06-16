@@ -5,7 +5,7 @@ const visit = require('unist-util-visit');
  * Ignore node manager that manager ignored ranges.
  *
  */
-export default class IgnoreNodeManger {
+export default class IgnoreNodeManager {
     constructor() {
         /**
          * @type {[number,number][]}

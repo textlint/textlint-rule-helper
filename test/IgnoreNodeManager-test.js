@@ -1,9 +1,9 @@
 // LICENSE : MIT
 "use strict";
 import assert from 'power-assert'
-import IgnoreNodeManger from "../src/IgnoreNodeManger";
+import IgnoreNodeManager from "../src/IgnoreNodeManager";
 import {textlint} from "textlint"
-describe("IgnoreNodeManger", function () {
+describe("IgnoreNodeManager", function () {
     afterEach(function () {
         textlint.resetRules();
     });
@@ -12,7 +12,7 @@ describe("IgnoreNodeManger", function () {
             it("should ignore range by index", () => {
                 var text = "text`code`text";
                 var isIgnored = false;
-                const ignoreManager = new IgnoreNodeManger();
+                const ignoreManager = new IgnoreNodeManager();
                 textlint.setupRules({
                     "rule-key": function (context) {
                         const {Syntax, RuleError, report, getSource} = context;
