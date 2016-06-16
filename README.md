@@ -33,7 +33,7 @@ Return true if `node` is wrapped any one of node `types`.
 - node `TxtNode` - is target node
 - types `Array.<string>` - are wrapped target node
 
-### class IgnoreNodeManger
+### class IgnoreNodeManager
 
 You can manager ignoring range in texts.
 
@@ -93,10 +93,10 @@ A rule for [textlint](https://github.com/textlint/textlint "textlint").
 
 ```js
 var RuleHelper = require("textlint-rule-helper").RuleHelper;
-var IgnoreNodeManger = require("textlint-rule-helper").IgnoreNodeManger;
+var IgnoreNodeManager = require("textlint-rule-helper").IgnoreNodeManager;
 module.exports = function (context) {
     var helper = new RuleHelper(context);
-    var ignoreNodeManager = new IgnoreNodeManger()
+    var ignoreNodeManager = new IgnoreNodeManager()
     var exports = {}
     var reportingErrors = [];
     exports[context.Syntax.Paragraph] = function(node){
