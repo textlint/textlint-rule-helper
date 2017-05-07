@@ -1,5 +1,7 @@
 # textlint-rule-helper
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/textlint/textlint-rule-helper.svg)](https://greenkeeper.io/)
+
 This is helper library for creating [textlint](https://github.com/textlint/textlint "textlint") rule.
 
 ## Installation
