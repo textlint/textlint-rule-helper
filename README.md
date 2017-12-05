@@ -94,36 +94,36 @@ A rule for [textlint](https://github.com/textlint/textlint "textlint").
 ```js
 var RuleHelper = require("textlint-rule-helper").RuleHelper;
 var IgnoreNodeManager = require("textlint-rule-helper").IgnoreNodeManager;
-module.exports = function (context) {
-    var helper = new RuleHelper(context);
-    var ignoreNodeManager = new IgnoreNodeManager()
-    var exports = {}
-    var reportingErrors = [];
-    exports[context.Syntax.Paragraph] = function(node){
-        // Add `Code` node to ignoring list
-        ignoreNodeManager.ignoreChildrenByTypes(node, [context.Syntax.Code])
-        // do something
-        reportingErrors.push(node, ruleError);
-    };
-    exports[context.Syntax.Str] = function(node){
-        // parent nodes is any one Link or Image.
-        if(helper.isChildNode(node, [context.Syntax.Link, context.Syntax.Image]){
-            return;
-        }
-        // get Parents
-        var parents = helper.getParents(node);
+module.exports = function(context) {
+  var helper = new RuleHelper(context);
+  var ignoreNodeManager = new IgnoreNodeManager();
+  var exports = {};
+  var reportingErrors = [];
+  exports[context.Syntax.Paragraph] = function(node) {
+    // Add `Code` node to ignoring list
+    ignoreNodeManager.ignoreChildrenByTypes(node, [context.Syntax.Code]);
+    // do something
+    reportingErrors.push(node, ruleError);
+  };
+  exports[context.Syntax.Str] = function(node) {
+    // parent nodes is any one Link or Image.
+    if (helper.isChildNode(node, [context.Syntax.Link, context.Syntax.Image])) {
+      return;
     }
-    [Syntax.Document + ":exit"](){
-        reportingErrors.forEach(function(node, ruleError){
-            // if the error is ignored, don't report
-            if(ignoreNodeManager.isIgnored(node)){
-                return;
-            }
-            // report actual
-        });
-    }
-    return exports;
-}
+    // get Parents
+    var parents = helper.getParents(node);
+  };
+  exports[Syntax.Document + ":exit"] = function(node) {
+    reportingErrors.forEach(function(node, ruleError) {
+      // if the error is ignored, don't report
+      if (ignoreNodeManager.isIgnored(node)) {
+        return;
+      }
+      // report actual
+    });
+  };
+  return exports;
+};
 ```
 
 ## Use-Case
