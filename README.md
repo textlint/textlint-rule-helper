@@ -1,4 +1,4 @@
-# textlint-rule-helper
+# textlint-rule-helper [![Build Status](https://travis-ci.org/textlint/textlint-rule-helper.svg?branch=master)](https://travis-ci.org/textlint/textlint-rule-helper)
 
 This is helper library for creating [textlint](https://github.com/textlint/textlint "textlint") rule.
 
