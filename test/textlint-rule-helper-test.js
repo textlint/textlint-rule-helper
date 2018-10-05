@@ -1,19 +1,19 @@
 // LICENSE : MIT
-"use strict";
-import assert from 'power-assert'
+import assert from 'assert'
 import RuleHelper from "../src/textlint-rule-helper";
-import {textlint} from "textlint"
-describe("textlint-rule-helper-test", function () {
-    afterEach(function () {
+import { textlint } from "textlint"
+
+describe("textlint-rule-helper-test", function() {
+    afterEach(function() {
         textlint.resetRules();
     });
-    describe("#getParents()", ()=> {
-        context("on Document", ()=> {
+    describe("#getParents()", () => {
+        context("on Document", () => {
             it("should return []", () => {
-                var text = "# Header";
-                var parents = [];
+                const text = "# Header";
+                let parents = [];
                 textlint.setupRules({
-                    "rule-key": function (context) {
+                    "rule-key": function(context) {
                         var helper = new RuleHelper(context);
                         return {
                             [context.Syntax.Document](node) {
@@ -22,17 +22,17 @@ describe("textlint-rule-helper-test", function () {
                         }
                     }
                 });
-                return textlint.lintMarkdown(text).then(()=> {
-                    assert(parents.length === 0);
+                return textlint.lintMarkdown(text).then(() => {
+                    assert.strictEqual(parents.length, 0);
                 });
             });
 
         });
         it("should return parents", () => {
-            var text = "# Header";
-            var parents = [];
+            const text = "# Header";
+            let parents = [];
             textlint.setupRules({
-                "rule-key": function (context) {
+                "rule-key": function(context) {
                     var helper = new RuleHelper(context);
                     return {
                         [context.Syntax.Str](node) {
@@ -42,17 +42,17 @@ describe("textlint-rule-helper-test", function () {
                 }
             });
             return textlint.lintMarkdown(text).then(() => {
-                assert(parents.length === 2);
+                assert.strictEqual(parents.length, 2);
             });
         });
     });
-    describe("#isChildNode(node, parentTypes)", ()=> {
-        context("when the parent node is Paragraph, the child node is Str", ()=> {
+    describe("#isChildNode(node, parentTypes)", () => {
+        context("when the parent node is Paragraph, the child node is Str", () => {
             it("should be true", () => {
-                var text = "text";
-                var result;
+                const text = "text";
+                let result;
                 textlint.setupRules({
-                    "rule-key": function (context) {
+                    "rule-key": function(context) {
                         var helper = new RuleHelper(context);
                         return {
                             [context.Syntax.Str](node) {
@@ -61,17 +61,17 @@ describe("textlint-rule-helper-test", function () {
                         }
                     }
                 });
-                return textlint.lintMarkdown(text).then(()=> {
+                return textlint.lintMarkdown(text).then(() => {
                     assert.ok(result);
                 });
             });
         });
-        context("when the parent node is Str, the child node is Paragraph", ()=> {
+        context("when the parent node is Str, the child node is Paragraph", () => {
             it("should be false", () => {
-                var text = "text";
-                var result;
+                const text = "text";
+                let result;
                 textlint.setupRules({
-                    "rule-key": function (context) {
+                    "rule-key": function(context) {
                         var helper = new RuleHelper(context);
                         return {
                             [context.Syntax.Paragraph](node) {
@@ -80,7 +80,7 @@ describe("textlint-rule-helper-test", function () {
                         }
                     }
                 });
-                return textlint.lintMarkdown(text).then(()=> {
+                return textlint.lintMarkdown(text).then(() => {
                     assert.ok(!result);
                 });
             });
