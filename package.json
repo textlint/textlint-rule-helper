@@ -13,8 +13,8 @@
     "src"
   ],
   "scripts": {
-    "build": "babel src --out-dir lib --source-maps",
-    "watch": "babel src --out-dir lib --watch --source-maps",
+    "build": "babel src/ --out-dir lib/ --source-maps",
+    "watch": "babel src/ --out-dir lib/ --watch --source-maps",
     "test": "mocha test/",
     "prepublish": "npm run build"
   },
