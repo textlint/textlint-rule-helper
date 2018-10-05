@@ -21,8 +21,8 @@ export default class RuleHelper {
      * @returns {TxtNode[]}
      */
     getParents(node) {
-        var result = [];
-        var parent = node.parent;
+        const result = [];
+        let parent = node.parent;
         while (parent != null) {
             result.push(parent);
             parent = parent.parent;
@@ -37,8 +37,8 @@ export default class RuleHelper {
      * @returns {boolean}
      */
     isChildNode(node, types) {
-        var parents = this.getParents(node);
-        var parentsTypes = parents.map(function (parent) {
+        const parents = this.getParents(node);
+        const parentsTypes = parents.map(function(parent) {
             return parent.type;
         });
         return types.some(function (type) {
