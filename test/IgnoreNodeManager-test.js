@@ -1,6 +1,5 @@
 // LICENSE : MIT
-"use strict";
-import assert from 'power-assert'
+import assert from 'assert'
 import IgnoreNodeManager from "../src/IgnoreNodeManager";
 import {textlint} from "textlint"
 describe("IgnoreNodeManager", function () {
@@ -10,8 +9,8 @@ describe("IgnoreNodeManager", function () {
     describe("#ignoreChildrenByTypes()", ()=> {
         context("when the parent node is Paragraph, the child node is Str", ()=> {
             it("should ignore range by index", () => {
-                var text = "text`code`text";
-                var isIgnored = false;
+                const text = "text`code`text";
+                let isIgnored = false;
                 const ignoreManager = new IgnoreNodeManager();
                 textlint.setupRules({
                     "rule-key": function (context) {
@@ -28,8 +27,7 @@ describe("IgnoreNodeManager", function () {
                 });
                 return textlint.lintMarkdown(text).then(()=> {
                     assert.ok(isIgnored);
-                    assert.deepEqual(ignoreManager["_ignoredRangeList"], [[4, 10]]);
-
+                    assert.deepStrictEqual(ignoreManager["_ignoredRangeList"], [[4, 10]]);
                 });
             });
         });

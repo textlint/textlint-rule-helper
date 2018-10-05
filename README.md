@@ -8,7 +8,7 @@ This is helper library for creating [textlint](https://github.com/textlint/textl
 npm install textlint-rule-helper
 ```
 
-## Usage - API
+## API
 
 ### class RuleHelper
 
