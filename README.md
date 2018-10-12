@@ -24,7 +24,7 @@ The parent nodes are returned in order from the closest parent to the outer ones
 
 - node `TxtNode` - the node is start point.
 
-####ruleHelper.isChildNode(node, types): boolean
+#### ruleHelper.isChildNode(node, types): boolean
 
 Return true if `node` is wrapped any one of node `types`.
 
@@ -66,6 +66,7 @@ Add range of children node of `node` to ignoring range list,
 #### isIgnoredIndex(index): boolean
 
 If the `index` is included in ignoring range list, return true.
+`index` should be absolute position.
 
 **Params**
 
@@ -74,6 +75,7 @@ If the `index` is included in ignoring range list, return true.
 #### isIgnoredRange(range): boolean
 
 If the `range` is included in ignoring range list, return true.
+`range` should includes absolute positions.
 
 **Params**
 
