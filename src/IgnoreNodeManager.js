@@ -15,6 +15,13 @@ export default class IgnoreNodeManager {
     }
 
     /**
+     * @returns {(number)[][]}
+     */
+    get ignoredRanges() {
+        return this._ignoredRangeList;
+    }
+
+    /**
      * |.......|
      * ^       ^
      * Ignored Range
@@ -28,7 +35,7 @@ export default class IgnoreNodeManager {
     isIgnoredIndex(index) {
         return this._ignoredRangeList.some(range => {
             const [start, end] = range;
-            return start <= index && index <= end;
+            return start <= index && index < end;
         })
     }
 
