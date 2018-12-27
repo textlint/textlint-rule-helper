@@ -1,6 +1,6 @@
 // LICENSE : MIT
 import assert from 'assert'
-import RuleHelper from "../src/textlint-rule-helper";
+import { RuleHelper } from "../src/";
 import { textlint } from "textlint"
 
 describe("textlint-rule-helper-test", function() {

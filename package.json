@@ -25,6 +25,7 @@
     "watch": "tsc -p . --watch"
   },
   "dependencies": {
+    "@textlint/ast-node-types": "^4.0.3",
     "unist-util-visit": "^1.1.0"
   },
   "devDependencies": {

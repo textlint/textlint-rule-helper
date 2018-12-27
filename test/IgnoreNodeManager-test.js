@@ -1,7 +1,7 @@
 // LICENSE : MIT
 import assert from 'assert'
 import { textlint } from "textlint"
-import IgnoreNodeManager from "../src/IgnoreNodeManager";
+import {IgnoreNodeManager} from "../src/";
 
 describe("IgnoreNodeManager", function() {
     afterEach(function() {
