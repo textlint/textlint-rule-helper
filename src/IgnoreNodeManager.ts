@@ -1,6 +1,6 @@
 // LICENSE : MIT
 "use strict";
-import { TxtNode, TxtParentNode, TxtNodeType } from "@textlint/ast-node-types"
+import { TxtNode, TxtParentNode, TxtNodeType, TextNodeRange } from "@textlint/ast-node-types"
 
 const visit = require('unist-util-visit');
 /**
@@ -8,7 +8,7 @@ const visit = require('unist-util-visit');
  *
  */
 export default class IgnoreNodeManager {
-    private _ignoredRangeList: [number, number][];
+    private _ignoredRangeList: TextNodeRange[];
 
     constructor() {
         /**
@@ -47,7 +47,7 @@ export default class IgnoreNodeManager {
      * @param {[number, number]} aRange
      * @returns {boolean}
      */
-    isIgnoredRange(aRange: [number, number]) {
+    isIgnoredRange(aRange: TextNodeRange) {
         const index = aRange[0];
         return this.isIgnoredIndex(index);
     }
@@ -73,7 +73,7 @@ export default class IgnoreNodeManager {
      * add range to ignore range list
      * @param {[number, number]} range
      */
-    ignoreRange(range: [number, number]) {
+    ignoreRange(range: TextNodeRange) {
         this._ignoredRangeList.push(range);
     }
 
