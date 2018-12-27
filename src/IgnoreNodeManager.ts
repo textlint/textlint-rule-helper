@@ -1,6 +1,6 @@
 // LICENSE : MIT
 "use strict";
-import { TxtNode, TxtParentNode, ASTNodeTypes } from "@textlint/ast-node-types"
+import { TxtNode, TxtParentNode, TxtNodeType } from "@textlint/ast-node-types"
 
 const visit = require('unist-util-visit');
 /**
@@ -83,7 +83,7 @@ export default class IgnoreNodeManager {
      * @param {TxtNode} targetNode
      * @param {string[]} ignoredNodeTypes
      */
-    ignoreChildrenByTypes(targetNode: TxtNode | TxtParentNode, ignoredNodeTypes: ASTNodeTypes) {
+    ignoreChildrenByTypes(targetNode: TxtNode | TxtParentNode, ignoredNodeTypes: TxtNodeType[]) {
         visit(targetNode, (visitedNode: TxtNode | TxtParentNode) => {
             if (ignoredNodeTypes.indexOf(visitedNode.type) !== -1) {
                 this.ignore(visitedNode);
