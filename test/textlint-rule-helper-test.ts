@@ -1,10 +1,11 @@
 // LICENSE : MIT
 import assert from 'assert'
-import RuleHelper from "../src/textlint-rule-helper";
+import { RuleHelper } from "../src/";
 import { textlint } from "textlint"
+import { TxtNode, TxtParentNode } from "@textlint/ast-node-types"
 
-describe("textlint-rule-helper-test", function() {
-    afterEach(function() {
+describe("textlint-rule-helper-test", function () {
+    afterEach(function () {
         textlint.resetRules();
     });
     describe("#getParents()", () => {
@@ -13,10 +14,10 @@ describe("textlint-rule-helper-test", function() {
                 const text = "# Header";
                 let parents = [];
                 textlint.setupRules({
-                    "rule-key": function(context) {
+                    "rule-key": function (context: any) {
                         var helper = new RuleHelper(context);
                         return {
-                            [context.Syntax.Document](node) {
+                            [context.Syntax.Document](node: TxtParentNode) {
                                 parents = helper.getParents(node)
                             }
                         }
@@ -32,10 +33,10 @@ describe("textlint-rule-helper-test", function() {
             const text = "# Header";
             let parents = [];
             textlint.setupRules({
-                "rule-key": function(context) {
+                "rule-key": function (context: any) {
                     var helper = new RuleHelper(context);
                     return {
-                        [context.Syntax.Str](node) {
+                        [context.Syntax.Str](node: TxtNode) {
                             parents = helper.getParents(node)
                         }
                     }
@@ -50,12 +51,12 @@ describe("textlint-rule-helper-test", function() {
         context("when the parent node is Paragraph, the child node is Str", () => {
             it("should be true", () => {
                 const text = "text";
-                let result;
+                let result: boolean;
                 textlint.setupRules({
-                    "rule-key": function(context) {
+                    "rule-key": function (context: any) {
                         var helper = new RuleHelper(context);
                         return {
-                            [context.Syntax.Str](node) {
+                            [context.Syntax.Str](node: TxtNode) {
                                 result = helper.isChildNode(node, [context.Syntax.Paragraph])
                             }
                         }
@@ -69,12 +70,12 @@ describe("textlint-rule-helper-test", function() {
         context("when the parent node is Str, the child node is Paragraph", () => {
             it("should be false", () => {
                 const text = "text";
-                let result;
+                let result: boolean;
                 textlint.setupRules({
-                    "rule-key": function(context) {
+                    "rule-key": function (context: any) {
                         var helper = new RuleHelper(context);
                         return {
-                            [context.Syntax.Paragraph](node) {
+                            [context.Syntax.Paragraph](node: TxtParentNode) {
                                 result = helper.isChildNode(node, [context.Syntax.Str])
                             }
                         }

@@ -1,11 +1,15 @@
 // LICENSE : MIT
 "use strict";
+import { TxtNode, TxtParentNode, TxtNodeType, TextNodeRange } from "@textlint/ast-node-types"
+
 const visit = require('unist-util-visit');
 /**
  * Ignore node manager that manager ignored ranges.
  *
  */
 export default class IgnoreNodeManager {
+    private _ignoredRangeList: TextNodeRange[];
+
     constructor() {
         /**
          * @type {[number,number][]}
@@ -32,7 +36,7 @@ export default class IgnoreNodeManager {
      * @param {number} index
      * @returns {boolean}
      */
-    isIgnoredIndex(index) {
+    isIgnoredIndex(index: number) {
         return this._ignoredRangeList.some(range => {
             const [start, end] = range;
             return start <= index && index < end;
@@ -43,7 +47,7 @@ export default class IgnoreNodeManager {
      * @param {[number, number]} aRange
      * @returns {boolean}
      */
-    isIgnoredRange(aRange) {
+    isIgnoredRange(aRange: TextNodeRange) {
         const index = aRange[0];
         return this.isIgnoredIndex(index);
     }
@@ -52,7 +56,7 @@ export default class IgnoreNodeManager {
      * @param {Object} node
      * @returns {boolean}
      */
-    isIgnored(node) {
+    isIgnored(node: TxtNode | TxtParentNode) {
         const index = node.index;
         return this.isIgnoredIndex(index);
     }
@@ -61,7 +65,7 @@ export default class IgnoreNodeManager {
      * add node to ignore range list
      * @param {TxtNode} node
      */
-    ignore(node) {
+    ignore(node: TxtNode | TxtParentNode) {
         this.ignoreRange(node.range);
     }
 
@@ -69,7 +73,7 @@ export default class IgnoreNodeManager {
      * add range to ignore range list
      * @param {[number, number]} range
      */
-    ignoreRange(range) {
+    ignoreRange(range: TextNodeRange) {
         this._ignoredRangeList.push(range);
     }
 
@@ -79,8 +83,8 @@ export default class IgnoreNodeManager {
      * @param {TxtNode} targetNode
      * @param {string[]} ignoredNodeTypes
      */
-    ignoreChildrenByTypes(targetNode, ignoredNodeTypes) {
-        visit(targetNode, visitedNode => {
+    ignoreChildrenByTypes(targetNode: TxtNode | TxtParentNode, ignoredNodeTypes: TxtNodeType[]) {
+        visit(targetNode, (visitedNode: TxtNode | TxtParentNode) => {
             if (ignoredNodeTypes.indexOf(visitedNode.type) !== -1) {
                 this.ignore(visitedNode);
             }

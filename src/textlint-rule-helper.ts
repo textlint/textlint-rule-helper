@@ -1,16 +1,19 @@
-// LICENSE : MIT
-"use strict";
+import { TxtNode } from "@textlint/ast-node-types"
+
 /**
  * RuleHelper is helper class for textlint.
  * @class RuleHelper
  */
 export default class RuleHelper {
+    // @ts-ignore
+    private _ruleContext: any;
+
     /**
      * Initialize RuleHelper with RuleContext object.
      * @param {RuleContext} ruleContext the ruleContext is context object of the rule.
      */
-    constructor(ruleContext) {
-        this.ruleContext = ruleContext;
+    constructor(ruleContext: any) {
+        this._ruleContext = ruleContext;
     }
 
     /**
@@ -18,9 +21,8 @@ export default class RuleHelper {
      * The parent nodes are returned in order from the closest parent to the outer ones.
      * {@link node} is not contained in the results.
      * @param {TxtNode} node the node is start point.
-     * @returns {TxtNode[]}
      */
-    getParents(node) {
+    getParents(node: TxtNode) {
         const result = [];
         let parent = node.parent;
         while (parent != null) {
@@ -36,9 +38,9 @@ export default class RuleHelper {
      * @param {string[]} types are wrapped target node
      * @returns {boolean}
      */
-    isChildNode(node, types) {
+    isChildNode(node: TxtNode, types: string[]) {
         const parents = this.getParents(node);
-        const parentsTypes = parents.map(function(parent) {
+        const parentsTypes = parents.map(function (parent) {
             return parent.type;
         });
         return types.some(function (type) {

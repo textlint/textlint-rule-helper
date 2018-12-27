@@ -1,39 +1,43 @@
 {
   "name": "textlint-rule-helper",
-  "description": "Helper for textlint rule.",
   "version": "2.0.1",
+  "description": "Helper for textlint rule.",
   "homepage": "https://github.com/textlint/textlint-rule-helper/",
+  "bugs": {
+    "url": "https://github.com/textlint/textlint-rule-helper/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/textlint/textlint-rule-helper.git"
   },
-  "main": "lib/index.js",
+  "license": "MIT",
+  "author": "azu",
   "files": [
     "lib",
     "src"
   ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "build": "babel src/ --out-dir lib/ --source-maps",
-    "watch": "babel src/ --out-dir lib/ --watch --source-maps",
-    "test": "mocha test/",
-    "prepublish": "npm run build"
+    "build": "cross-env NODE_ENV=production tsc -p .",
+    "prepublish": "npm run --if-present build",
+    "test": "mocha \"test/**/*.{js,ts}\"",
+    "watch": "tsc -p . --watch"
   },
-  "author": "azu",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/textlint/textlint-rule-helper/issues"
+  "dependencies": {
+    "@textlint/ast-node-types": "^4.0.3",
+    "unist-util-visit": "^1.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/register": "^7.0.0",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.12.18",
+    "cross-env": "^5.2.0",
     "markdown-to-ast": "^6.0.3",
     "mocha": "^5.2.0",
     "textlint": "^11.0.0",
-    "txt-ast-traverse": "^2.0.4"
-  },
-  "dependencies": {
-    "unist-util-visit": "^1.1.0"
+    "ts-node": "^7.0.1",
+    "ts-node-test-register": "^4.0.0",
+    "txt-ast-traverse": "^2.0.4",
+    "typescript": "^3.2.2"
   }
 }
