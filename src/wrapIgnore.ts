@@ -1,18 +1,26 @@
 // MIT © 2018 azu
 "use strict";
-import { ASTNodeTypes } from "@textlint/ast-node-types";
-import RuleHelper from "./textlint-rule-helper.js";
+import { TxtNode, TxtNodeType, TxtParentNode } from "@textlint/ast-node-types";
+import RuleHelper from "./textlint-rule-helper";
+
+export interface wrapOptions {
+    ignoreNodeTypes: TxtNodeType[]
+}
+
+type Handlers = {
+    [P in TxtNodeType]: (node: TxtNode | TxtParentNode) => any;
+}
 
 /**
  * @param {{ignoreNodeTypes:ASTNodeTypes[]}} options
  * @param {object} nodeHandlers
  */
-export function wrap(options, nodeHandlers = {}) {
+export function wrap(options: wrapOptions, nodeHandlers: Handlers = {}) {
     const ignoreNodeTypes = options.ignoreNodeTypes || [];
     const ruleHelper = new RuleHelper({});
     Object.keys(nodeHandlers).forEach(nodeType => {
         const nodeHandler = nodeHandlers[nodeType];
-        const wrappedNodeHandler = (node) => {
+        const wrappedNodeHandler = (node: TxtNode | TxtParentNode) => {
             if (ruleHelper.isChildNode(node, ignoreNodeTypes)) {
                 return;
             }
