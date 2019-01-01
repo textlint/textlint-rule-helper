@@ -5,7 +5,7 @@ import Source from "structured-source"
 import { wrapReportHandler } from "../src/wrap-report-handler";
 import { TxtParentNode } from "@textlint/ast-node-types";
 
-describe("wrap", function () {
+describe("wrapReportHandler", function () {
     afterEach(function () {
         textlint.resetRules();
     });
