@@ -1,7 +1,7 @@
 // MIT © 2018 azu
 "use strict";
-import { TxtNode, TxtNodeType, TxtParentNode, AnyTxtNode } from "@textlint/ast-node-types";
-import { TextlintRuleError, TextlintRuleReportHandler } from "@textlint/types";
+import { AnyTxtNode, TxtNodeType } from "@textlint/ast-node-types";
+import { TextlintRuleContext, TextlintRuleError, TextlintRuleReportHandler } from "@textlint/types";
 import RuleHelper from "./textlint-rule-helper";
 import IgnoreNodeManager from "./IgnoreNodeManager";
 import { SourceLocation } from "./SourceLocation";
@@ -16,28 +16,25 @@ export interface wrapOptions {
     ignoreNodeTypes: TxtNodeType[]
 }
 
-export function wrapReportHandler<T extends Function, R extends TextlintRuleReportHandler>(
+export function wrapReportHandler<T extends TextlintRuleContext, R extends TextlintRuleReportHandler>(
     options: wrapOptions,
     context: T,
     handler: (
-        report: (node: AnyTxtNode, ruleError: TextlintRuleError) => R
+        report: (node: AnyTxtNode, ruleError: TextlintRuleError) => void
     ) => R
 ) {
     const ignoreNodeTypes = options.ignoreNodeTypes || [];
     const ignoreNodeManager = new IgnoreNodeManager();
     const ruleHelper = new RuleHelper(context);
-    const text = (context as any).getSource();
+    const text = context.getSource();
     const sourceLocation = new SourceLocation(text);
-    const reportIfUnignored = function reportIfUnignored(...args: any[]): any | Promise<any> {
-            const node: TxtNode | TxtParentNode = args[0];
-            const ruleError: RuleErrorPadding = args[1];
-            const index = sourceLocation.toAbsoluteLocation(node, ruleError);
-            if (ignoreNodeManager.isIgnoredIndex(index)) {
-                return;
-            }
-            return (context as any).report(...args);
+    const reportIfUnignored = function reportIfUnignored(node: AnyTxtNode, ruleError: TextlintRuleError): void | Promise<any> {
+        const index = sourceLocation.toAbsoluteLocation(node, ruleError);
+        if (ignoreNodeManager.isIgnoredIndex(index)) {
+            return;
         }
-    ;
+        return context.report(node, ruleError);
+    };
 
     const handlers = handler(reportIfUnignored);
     Object.keys(handlers).forEach(nodeType => {
