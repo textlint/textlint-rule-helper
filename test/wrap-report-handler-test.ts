@@ -3,7 +3,6 @@ import assert from 'assert'
 import { textlint } from "textlint"
 import Source from "structured-source"
 import { wrapReportHandler } from "../src/wrap-report-handler";
-import { TxtParentNode } from "@textlint/ast-node-types";
 
 describe("wrapReportHandler", function () {
     afterEach(function () {
@@ -79,7 +78,7 @@ describe("wrapReportHandler", function () {
                         ignoreNodeTypes: [context.Syntax.Code]
                     }, context, report => {
                         return {
-                            [Syntax.Paragraph](node: TxtParentNode) {
+                            [Syntax.Paragraph](node) {
                                 const text = getSource(node);
                                 expectedList.forEach(item => {
                                     const index = text.search(item.name);
@@ -114,7 +113,7 @@ describe("wrapReportHandler", function () {
                         ignoreNodeTypes: [context.Syntax.Code]
                     }, context, report => {
                         return {
-                            [Syntax.Paragraph](node: TxtParentNode) {
+                            [Syntax.Paragraph](node) {
                                 const text = context.getSource(node);
                                 const source = new Source(text);
                                 const indexOfCode = text.search("code");
