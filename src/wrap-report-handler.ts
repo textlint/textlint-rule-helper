@@ -1,12 +1,10 @@
 // MIT © 2018 azu
 "use strict";
-
-import { TxtNode, TxtNodeType, TxtParentNode } from "@textlint/ast-node-types";
+import { TxtNode, TxtNodeType, TxtParentNode, AnyTxtNode } from "@textlint/ast-node-types";
+import { TextlintRuleError, TextlintRuleReportHandler } from "@textlint/types";
 import RuleHelper from "./textlint-rule-helper";
 import IgnoreNodeManager from "./IgnoreNodeManager";
 import { SourceLocation } from "./SourceLocation";
-// FIXME: expose RuleError
-import RuleError from "@textlint/kernel/lib/kernel/src/core/rule-error";
 
 export interface RuleErrorPadding {
     line?: number;
@@ -18,13 +16,12 @@ export interface wrapOptions {
     ignoreNodeTypes: TxtNodeType[]
 }
 
-export function wrapReportHandler<T extends Function, R extends {
-    [P in TxtNodeType]?: (node: TxtNode | TxtParentNode) => void | Promise<any>
-}>(options: wrapOptions,
-   context: T,
-   handler: (
-       report: (node: TxtNode | TxtParentNode, ruleError: RuleError) => R
-   ) => R
+export function wrapReportHandler<T extends Function, R extends TextlintRuleReportHandler>(
+    options: wrapOptions,
+    context: T,
+    handler: (
+        report: (node: AnyTxtNode, ruleError: TextlintRuleError) => R
+    ) => R
 ) {
     const ignoreNodeTypes = options.ignoreNodeTypes || [];
     const ignoreNodeManager = new IgnoreNodeManager();
@@ -45,7 +42,7 @@ export function wrapReportHandler<T extends Function, R extends {
     const handlers = handler(reportIfUnignored);
     Object.keys(handlers).forEach(nodeType => {
         const nodeHandler = handlers[nodeType];
-        const wrappedNodeHandler = (node: TxtNode | TxtParentNode) => {
+        const wrappedNodeHandler = (node: AnyTxtNode) => {
             // child nodes
             ignoreNodeManager.ignoreChildrenByTypes(node, ignoreNodeTypes);
             // parent node

@@ -1,8 +1,8 @@
 // LICENSE : MIT
 "use strict";
 import SourceCode from "structured-source";
-import { RuleErrorPadding } from "./wrapIgnore";
-import { TxtNode, TxtParentNode } from "@textlint/ast-node-types";
+import { TextlintRuleErrorPadding } from "@textlint/types";
+import { AnyTxtNode } from "@textlint/ast-node-types";
 
 export class SourceLocation {
     private source: SourceCode;
@@ -11,7 +11,7 @@ export class SourceLocation {
         this.source = new SourceCode(text);
     }
 
-    toAbsoluteLocation(node: TxtNode | TxtParentNode, padding: RuleErrorPadding) {
+    toAbsoluteLocation(node: AnyTxtNode, padding: TextlintRuleErrorPadding) {
         const nodeRange = node.range;
         const line = node.loc.start.line;
         const column = node.loc.start.column;
