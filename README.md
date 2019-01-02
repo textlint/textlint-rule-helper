@@ -130,9 +130,14 @@ module.exports = function(context) {
 
 ## `wrapReportHandler(context, options, handler): TextlintRuleReportHandler`
 
+**Params**
+
+- context `TextlintRuleContent` - rule context object
+- options `{{ignoreNodeTypes: TxtNodeType[]}}` - options
+- handler `(report: (node: AnyTxtNode, ruleError: TextlintRuleError) => void) => any` - handler should return a object
+
 `wrapReportHandler` is high level API that use `RuleHelper` and `IgnoreNodeManager`.
 It aim to easy to ignore some Node type for preventing unnecessary error report.
-````
 
 Example: ignore `BlockQuote` and `Code` node.
 
@@ -142,6 +147,7 @@ const reporter = function (context) {
    return wrapReportHandler({
        ignoreNodeTypes: [Syntax.BlockQuote, Syntax.Code]
    }, context, report => { // <= wrap version of context.report
+       // handler should return a rule handler object
        return {
            [Syntax.Paragraph](node) {
                const text = getSource(node);
