@@ -6,16 +6,21 @@ import RuleHelper from "./textlint-rule-helper";
 import IgnoreNodeManager from "./IgnoreNodeManager";
 import { SourceLocation } from "./SourceLocation";
 
-export interface RuleErrorPadding {
-    line?: number;
-    column?: number;
-    index?: number;
-}
-
 export interface wrapOptions {
+    /**
+     * Define ignore node's type.
+     * It the node.type is matched, report error that is related with the location of node.
+     * You also should use `report` function that is passed as wrapReportHandler 3rd argument.
+     */
     ignoreNodeTypes: TxtNodeType[]
 }
 
+/**
+ *
+ * @param options
+ * @param context
+ * @param handler
+ */
 export function wrapReportHandler<T extends Readonly<TextlintRuleContext>, R extends TextlintRuleReportHandler>(
     options: wrapOptions,
     context: T,
