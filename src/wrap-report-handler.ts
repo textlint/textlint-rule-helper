@@ -6,7 +6,7 @@ import RuleHelper from "./textlint-rule-helper";
 import IgnoreNodeManager from "./IgnoreNodeManager";
 import { SourceLocation } from "./SourceLocation";
 
-export interface wrapOptions {
+export interface wrapReportHandlerOptions {
     /**
      * Define ignore node's type.
      * It the node.type is matched, report error that is related with the location of node.
@@ -22,7 +22,7 @@ export interface wrapOptions {
  * @param handler
  */
 export function wrapReportHandler<T extends Readonly<TextlintRuleContext>, R extends TextlintRuleReportHandler>(
-    options: wrapOptions,
+    options: wrapReportHandlerOptions,
     context: T,
     handler: (
         report: (node: AnyTxtNode, ruleError: TextlintRuleError) => void

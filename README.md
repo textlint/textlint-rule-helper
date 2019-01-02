@@ -132,6 +132,7 @@ module.exports = function(context) {
 
 `wrapReportHandler` is high level API that use `RuleHelper` and `IgnoreNodeManager`.
 It aim to easy to ignore some Node type for preventing unnecessary error report.
+````
 
 Example: ignore `BlockQuote` and `Code` node.
 
