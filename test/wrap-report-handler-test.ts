@@ -3,12 +3,59 @@ import assert from 'assert'
 import { textlint } from "textlint"
 import Source from "structured-source"
 import { wrapReportHandler } from "../src/wrap-report-handler";
+import { TextlintRuleReporter } from "@textlint/types";
+import { AnyTxtNode, ASTNodeTypes } from "@textlint/ast-node-types";
 
 describe("wrapReportHandler", function () {
     afterEach(function () {
         textlint.resetRules();
     });
     describe("ignoreNodeTypes", () => {
+        it("should just ignore node", () => {
+            textlint.setupRules({
+                "rule-key": function (context) {
+                    const { RuleError } = context;
+                    return wrapReportHandler({
+                        ignoreNodeTypes: Object.keys(ASTNodeTypes)
+                    }, context, report => {
+                        return {
+                            ...(Object.keys(ASTNodeTypes).reduce((object, key) => {
+                                object[key] = (node: AnyTxtNode) => {
+                                    report(node, new RuleError(node.type));
+                                };
+                                return object;
+                            }, {} as any))
+                        };
+                    });
+                } as TextlintRuleReporter
+            });
+            const text = `# Header
+
+**This** *is* \`code\`.
+
+- item
+    - item __str__
+
+[link](https://example.com)
+![img](https://example.com)
+
+\`\`\`
+code
+\`\`\`
+
+----
+
+    code
+
+[1][]
+
+[1]: "1"
+
+`;
+            return textlint.lintText(text, ".md").then((result) => {
+                assert.strictEqual(result.messages.length, 0, "Should ignore all nodes");
+            });
+        });
         it("should ignore parent node by types", () => {
             let isCalled = false;
             textlint.setupRules({

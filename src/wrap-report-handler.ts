@@ -16,7 +16,7 @@ export interface wrapOptions {
     ignoreNodeTypes: TxtNodeType[]
 }
 
-export function wrapReportHandler<T extends TextlintRuleContext, R extends TextlintRuleReportHandler>(
+export function wrapReportHandler<T extends Readonly<TextlintRuleContext>, R extends TextlintRuleReportHandler>(
     options: wrapOptions,
     context: T,
     handler: (
