@@ -89,7 +89,7 @@ If the `range` of `node` is included in ignoring range list, return true.
 
 -  node `TxtNode` - target node
 
-## Example
+### RuleHelper and IgnoreNodeManager Example
 
 A rule for [textlint](https://github.com/textlint/textlint "textlint").
 
@@ -127,6 +127,56 @@ module.exports = function(context) {
   return exports;
 };
 ```
+
+## `wrapReportHandler(context, options, handler): TextlintRuleReportHandler`
+
+**Params**
+
+- context `TextlintRuleContent` - rule context object
+- options `{{ignoreNodeTypes: TxtNodeType[]}}` - options
+- handler `(report: (node: AnyTxtNode, ruleError: TextlintRuleError) => void) => any` - handler should return a object
+
+`wrapReportHandler` is high level API that use `RuleHelper` and `IgnoreNodeManager`.
+It aim to easy to ignore some Node type for preventing unnecessary error report.
+
+Example: ignore `BlockQuote` and `Code` node.
+
+```js
+const reporter = function (context) {
+   const { Syntax, getSource } = context;
+   return wrapReportHandler({
+       ignoreNodeTypes: [Syntax.BlockQuote, Syntax.Code]
+   }, context, report => { // <= wrap version of context.report
+       // handler should return a rule handler object
+       return {
+           [Syntax.Paragraph](node) {
+               const text = getSource(node);
+               const index = text.search("code");
+               /*
+                * Following text is matched, but it will not reported.
+                * ----
+                * This is `code`.
+                * > code
+                * ----
+                */
+                if(index === -1){
+                    return;
+                }
+                report(node, new context.RuleError(item.name, {
+                   index
+                }));
+           }
+       }
+   });
+};
+module.exports = reporter;
+```
+
+The Mechanism of `wrapReportHandler`: `
+
+- Ignore all parent nodes that are matched with `ignoreNodeTypes`.
+- Ignore all children nodes that are matched with `ignoreNodeTypes`.
+    - `wrapReportHandler` create custom `report` function that ignore matched node
 
 ## Use-Case
 

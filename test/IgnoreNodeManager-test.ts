@@ -8,6 +8,23 @@ describe("IgnoreNodeManager", function () {
     afterEach(function () {
         textlint.resetRules();
     });
+    describe("#isIgnoredRange()", () => {
+        it("should ignore multiple nodes", () => {
+            const ignoreManager = new IgnoreNodeManager();
+            // 0 1 2 3 4 5 6 7 8 9
+            //     ^ ^ ^
+            // 5(endIndex) is not included
+            ignoreManager.ignoreRange([2, 5]);
+            // Should ignore:
+            assert.ok(ignoreManager.isIgnoredRange([0, 1]) === false, "[0, 1]");
+            assert.ok(ignoreManager.isIgnoredRange([0, 10]) == false, "[0, 10]");
+            assert.ok(ignoreManager.isIgnoredRange([0, 2]), "[0, 2]");
+            assert.ok(ignoreManager.isIgnoredRange([2, 5]), "[2, 5]");
+            assert.ok(ignoreManager.isIgnoredRange([4, 5]), "[4, 5]");
+            assert.ok(ignoreManager.isIgnoredRange([5, 6]) === false, "[5, 6]");
+            assert.ok(ignoreManager.isIgnoredRange([6, 10]) === false , "[5, 6]");
+        });
+    });
     describe("#ignoreChildrenByTypes()", () => {
         it("should ignore multiple nodes", () => {
             const text = `

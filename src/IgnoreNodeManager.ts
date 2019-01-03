@@ -46,10 +46,10 @@ export default class IgnoreNodeManager {
     /**
      * @param {[number, number]} aRange
      * @returns {boolean}
+     * @deprecated This method will be removed
      */
     isIgnoredRange(aRange: TextNodeRange) {
-        const index = aRange[0];
-        return this.isIgnoredIndex(index);
+        return this.isIgnoredIndex(aRange[0]) || this.isIgnoredIndex(aRange[1]);
     }
 
     /**
