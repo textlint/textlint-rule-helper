@@ -17,16 +17,14 @@ export interface wrapReportHandlerOptions {
 
 /**
  *
- * @param options
  * @param context
+ * @param options
  * @param handler
  */
 export function wrapReportHandler<T extends Readonly<TextlintRuleContext>, R extends TextlintRuleReportHandler>(
-    options: wrapReportHandlerOptions,
     context: T,
-    handler: (
-        report: (node: AnyTxtNode, ruleError: TextlintRuleError) => void
-    ) => R
+    options: wrapReportHandlerOptions,
+    handler: (report: (node: AnyTxtNode, ruleError: TextlintRuleError) => void) => R
 ) {
     const ignoreNodeTypes = options.ignoreNodeTypes || [];
     const ignoreNodeManager = new IgnoreNodeManager();

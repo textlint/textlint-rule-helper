@@ -15,9 +15,9 @@ describe("wrapReportHandler", function () {
             textlint.setupRules({
                 "rule-key": function (context) {
                     const { RuleError } = context;
-                    return wrapReportHandler({
+                    return wrapReportHandler(context, {
                         ignoreNodeTypes: Object.keys(ASTNodeTypes).concat("my-type")
-                    }, context, report => {
+                    }, report => {
                         return {
                             ...(Object.keys(ASTNodeTypes).reduce((object, key) => {
                                 object[key] = (node: AnyTxtNode) => {
@@ -65,9 +65,9 @@ code
             let isCalled = false;
             textlint.setupRules({
                 "rule-key": function (context: any) {
-                    return wrapReportHandler({
+                    return wrapReportHandler(context, {
                         ignoreNodeTypes: [context.Syntax.BlockQuote, context.Syntax.Code]
-                    }, context, _report => {
+                    }, _report => {
                         return {
                             [context.Syntax.Paragraph]() {
                                 isCalled = true
@@ -126,9 +126,9 @@ code
             textlint.setupRules({
                 "rule-key": function (context) {
                     const { Syntax, getSource } = context;
-                    return wrapReportHandler({
+                    return wrapReportHandler(context, {
                         ignoreNodeTypes: [context.Syntax.Code]
-                    }, context, report => {
+                    }, report => {
                         return {
                             [Syntax.Paragraph](node) {
                                 const text = getSource(node);
@@ -161,9 +161,9 @@ code
             textlint.setupRules({
                 "rule-key": function (context) {
                     const { Syntax, RuleError } = context;
-                    return wrapReportHandler({
+                    return wrapReportHandler(context, {
                         ignoreNodeTypes: [context.Syntax.Code]
-                    }, context, report => {
+                    }, report => {
                         return {
                             [Syntax.Paragraph](node) {
                                 const text = context.getSource(node);

@@ -145,9 +145,9 @@ Example: ignore `BlockQuote` and `Code` node.
 import { wrapReportHandler } from "textlint-rule-helper";
 const reporter = function (context) {
    const { Syntax, getSource } = context;
-   return wrapReportHandler({
+   return wrapReportHandler(context, {
        ignoreNodeTypes: [Syntax.BlockQuote, Syntax.Code]
-   }, context, report => { // <= wrap version of context.report
+   },report => { // <= wrap version of context.report
        // handler should return a rule handler object
        return {
            [Syntax.Paragraph](node) {
