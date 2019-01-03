@@ -94,8 +94,8 @@ If the `range` of `node` is included in ignoring range list, return true.
 A rule for [textlint](https://github.com/textlint/textlint "textlint").
 
 ```js
-var RuleHelper = require("textlint-rule-helper").RuleHelper;
-var IgnoreNodeManager = require("textlint-rule-helper").IgnoreNodeManager;
+import { RuleHelper } from "textlint-rule-helper";
+import { IgnoreNodeManager } from "textlint-rule-helper";
 module.exports = function(context) {
   var helper = new RuleHelper(context);
   var ignoreNodeManager = new IgnoreNodeManager();
@@ -142,6 +142,7 @@ It aim to easy to ignore some Node type for preventing unnecessary error report.
 Example: ignore `BlockQuote` and `Code` node.
 
 ```js
+import { wrapReportHandler } from "textlint-rule-helper";
 const reporter = function (context) {
    const { Syntax, getSource } = context;
    return wrapReportHandler({
