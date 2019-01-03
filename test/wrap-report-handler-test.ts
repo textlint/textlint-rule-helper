@@ -16,7 +16,7 @@ describe("wrapReportHandler", function () {
                 "rule-key": function (context) {
                     const { RuleError } = context;
                     return wrapReportHandler({
-                        ignoreNodeTypes: Object.keys(ASTNodeTypes)
+                        ignoreNodeTypes: Object.keys(ASTNodeTypes).concat("my-type")
                     }, context, report => {
                         return {
                             ...(Object.keys(ASTNodeTypes).reduce((object, key) => {
@@ -24,7 +24,12 @@ describe("wrapReportHandler", function () {
                                     report(node, new RuleError(node.type));
                                 };
                                 return object;
-                            }, {} as any))
+                            }, {} as any)),
+                            ...{
+                                "my-type"(node) {
+                                    report(node, new RuleError(node.type));
+                                }
+                            }
                         };
                     });
                 } as TextlintRuleReporter
@@ -119,7 +124,7 @@ code
                 },
             ];
             textlint.setupRules({
-                "rule-key": function (context: any) {
+                "rule-key": function (context) {
                     const { Syntax, getSource } = context;
                     return wrapReportHandler({
                         ignoreNodeTypes: [context.Syntax.Code]
@@ -136,7 +141,7 @@ code
                             }
                         }
                     });
-                }
+                } as TextlintRuleReporter
             });
             const text = "123`456`789";
             return textlint.lintMarkdown(text).then((result) => {
@@ -154,7 +159,7 @@ code
             const text = "> Line 1\n"
                 + "> This is `code`.";
             textlint.setupRules({
-                "rule-key": function (context: any) {
+                "rule-key": function (context) {
                     const { Syntax, RuleError } = context;
                     return wrapReportHandler({
                         ignoreNodeTypes: [context.Syntax.Code]
@@ -175,7 +180,7 @@ code
                             }
                         }
                     });
-                }
+                } as TextlintRuleReporter
             });
             return textlint.lintMarkdown(text).then((result) => {
                 const messages = result.messages;
