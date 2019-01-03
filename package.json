@@ -25,8 +25,8 @@
     "watch": "tsc -p . --watch"
   },
   "dependencies": {
-    "@textlint/ast-node-types": "^4.1.0",
-    "@textlint/types": "^1.1.0",
+    "@textlint/ast-node-types": "^4.2.1",
+    "@textlint/types": "^1.1.2",
     "structured-source": "^3.0.2",
     "unist-util-visit": "^1.1.0"
   },
@@ -37,7 +37,7 @@
     "cross-env": "^5.2.0",
     "markdown-to-ast": "^6.0.3",
     "mocha": "^5.2.0",
-    "textlint": "^11.1.0",
+    "textlint": "^11.2.1",
     "ts-node": "^7.0.1",
     "ts-node-test-register": "^4.0.0",
     "txt-ast-traverse": "^2.0.4",
