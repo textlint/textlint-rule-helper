@@ -3,7 +3,6 @@
     "compilerOptions": {
         "declaration": false,
         "noEmit": true,
-        "allowJs": true
     },
     "include": [
         "../src/**/*",
