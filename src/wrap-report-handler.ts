@@ -29,6 +29,7 @@ export function wrapReportHandler<T extends Readonly<TextlintRuleContext>, R ext
     const ignoreNodeTypes = options.ignoreNodeTypes || [];
     const ignoreNodeManager = new IgnoreNodeManager();
     const ruleHelper = new RuleHelper(context);
+    // @ts-expect-error: https://github.com/textlint/textlint/issues/770
     const text = context.getSource();
     const sourceLocation = new SourceLocation(text);
     const reportIfUnignored = function reportIfUnignored(node: AnyTxtNode, ruleError: TextlintRuleError): void | Promise<any> {
@@ -54,6 +55,7 @@ export function wrapReportHandler<T extends Readonly<TextlintRuleContext>, R ext
             }
             return nodeHandler(node);
         };
+        // @ts-expect-error: ignore
         handlers[nodeType] = wrappedNodeHandler
     });
     return handlers;
