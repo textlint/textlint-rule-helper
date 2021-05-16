@@ -65,7 +65,8 @@ Return false
 [link title](https://example.com)
 > BlockQuote text
 **Strong text**
-[^footnote]: text text
+[linkReference][]
+[^footnote text]
 ```
 
 **Params**
