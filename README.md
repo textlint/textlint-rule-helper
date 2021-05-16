@@ -35,18 +35,18 @@ Return true if `node` is wrapped any one of node `types`.
 
 #### ruleHelper.isPlainStrNode(node): boolean
 
-Return true if the node is Str node and fill following conditions:
+`isPlainStrNode()` return true if the node is Str node and fill following conditions:
 
 - the node is Str node
 - the node is under the Paragraph node
 - the node is not under the BlockQuote
 
-This function is useful for common use-case.
-If you want to lint Str node, but you not want to lint styled node, this function is useful.
-The styled node is Link, Strong, BlockQuote, Header etc, and it may be written by another people.
-For example, you have added a link to your document, the link's title is written by another people.
+This function is useful for the common use case.
+If you want to lint Str node, but you do not want to lint styled node, this function is useful.
+The styled node is Link, Strong, BlockQuote, Header, and it may be written by other people.
+For example, you have added a link to your document, the link's title is written by other people.
 
-Opposite of it, The plain Str node is just under the Paragraph node, and it was written by user.
+Opposite of it, The plain Str node is just under the Paragraph node, and it was written by you.
 
 **Examples**
 
