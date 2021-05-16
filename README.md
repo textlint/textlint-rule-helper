@@ -1,4 +1,4 @@
-# textlint-rule-helper [![Build Status](https://travis-ci.org/textlint/textlint-rule-helper.svg?branch=master)](https://travis-ci.org/textlint/textlint-rule-helper)
+# textlint-rule-helper [![Actions Status: test](https://github.com/textlint/textlint-rule-helper/workflows/test/badge.svg)](https://github.com/textlint/textlint-rule-helper/actions?query=workflow%3A"test")
 
 This is helper library for creating [textlint](https://github.com/textlint/textlint "textlint") rule.
 
@@ -32,6 +32,46 @@ Return true if `node` is wrapped any one of node `types`.
 
 - node `TxtNode` - is target node
 - types `Array.<string>` - are wrapped target node
+
+#### ruleHelper.isPlainStrNode(node): boolean
+
+Return true if the node is Str node and fill following conditions:
+
+- the node is Str node
+- the node is under the Paragraph node
+- the node is not under the BlockQuote
+
+This function is useful for common use-case.
+If you want to lint Str node, but you not want to lint styled node, this function is useful.
+The styled node is Link, Strong, BlockQuote, Header etc, and it may be written by another people.
+For example, you have added a link to your document, the link's title is written by another people.
+
+Opposite of it, The plain Str node is just under the Paragraph node, and it was written by user.
+
+**Examples**
+
+Return true
+
+```markdown
+str str str
+- list text
+```
+
+Return false
+
+```markdown
+# Header
+![alt text](https://example.com)
+[link title](https://example.com)
+> BlockQuote text
+**Strong text**
+[linkReference][]
+[^footnote text]
+```
+
+**Params**
+
+- node `TxtNode` - is target node
 
 ### class IgnoreNodeManager
 
