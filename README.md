@@ -43,8 +43,30 @@ Return true if the node is Str node and fill following conditions:
 
 This function is useful for common use-case.
 If you want to lint Str node, but you not want to lint styled node, this function is useful.
-The styled node is Link, Strong, BlockQuote, Header etc...
-Opposite of it, The plain str node is just under the Paragraph node.
+The styled node is Link, Strong, BlockQuote, Header etc, and it may be written by another people.
+For example, you have added a link to your document, the link's title is written by another people.
+
+Opposite of it, The plain Str node is just under the Paragraph node, and it was written by user.
+
+**Examples**
+
+Return true
+
+```
+str str str
+- list text
+```
+
+Return false
+
+```markdown
+# Header
+![alt text](https://example.com)
+[link title](https://example.com)
+> BlockQuote text
+**Strong text**
+[^footnote]: text text
+```
 
 **Params**
 
