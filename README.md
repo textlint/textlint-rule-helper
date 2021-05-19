@@ -42,8 +42,10 @@ Return true if `node` is wrapped any one of node `types`.
 - the node is not under the BlockQuote
 
 This function is useful for the common use case.
+
 If you want to lint Str node, but you do not want to lint styled node, this function is useful.
-The styled node is Link, Strong, BlockQuote, Header, and it may be written by other people.
+The styled node is `Link`, `Strong`, `BlockQuote`, `Header`, and it may be written by other people.
+
 For example, you have added a link to your document, the link's title is written by other people.
 
 Opposite of it, The plain Str node is just under the Paragraph node, and it was written by you.
