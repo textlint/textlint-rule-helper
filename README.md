@@ -142,7 +142,7 @@ A rule for [textlint](https://github.com/textlint/textlint "textlint").
 ```js
 import { RuleHelper } from "textlint-rule-helper";
 import { IgnoreNodeManager } from "textlint-rule-helper";
-module.exports = function(context) {
+export default function(context) {
   var helper = new RuleHelper(context);
   var ignoreNodeManager = new IgnoreNodeManager();
   var exports = {};
@@ -216,7 +216,7 @@ const reporter = function (context) {
        }
    });
 };
-module.exports = reporter;
+export default reporter;
 ```
 
 The Mechanism of `wrapReportHandler`: `
