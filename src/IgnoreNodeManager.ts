@@ -1,8 +1,8 @@
 // LICENSE : MIT
 "use strict";
+import visit from "unist-util-visit";
 import { TxtNode, TxtParentNode, TxtNodeType, TextNodeRange } from "@textlint/ast-node-types"
 
-const visit = require('unist-util-visit');
 /**
  * Ignore node manager that manager ignored ranges.
  *
@@ -84,9 +84,9 @@ export default class IgnoreNodeManager {
      * @param {string[]} ignoredNodeTypes
      */
     ignoreChildrenByTypes(targetNode: TxtNode | TxtParentNode, ignoredNodeTypes: TxtNodeType[]) {
-        visit(targetNode, (visitedNode: TxtNode | TxtParentNode) => {
+        visit(targetNode, (visitedNode) => {
             if (ignoredNodeTypes.indexOf(visitedNode.type) !== -1) {
-                this.ignore(visitedNode);
+                this.ignore(visitedNode as TxtNode | TxtParentNode);
             }
         });
     }
