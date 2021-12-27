@@ -6,7 +6,7 @@ import { ASTNodeTypes, TxtNode } from "@textlint/ast-node-types"
  * @class RuleHelper
  */
 export default class RuleHelper {
-    // @ts-ignore
+    // @ts-expect-error
     private _ruleContext: Readonly<TextlintRuleContext>;
 
     /**
