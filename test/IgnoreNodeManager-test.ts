@@ -1,7 +1,7 @@
 // LICENSE : MIT
 import assert from 'assert'
 import { textlint } from "textlint"
-import { IgnoreNodeManager } from "../src/";
+import { IgnoreNodeManager } from "../src/index";
 import { TxtNodeType, TxtParentNode } from "@textlint/ast-node-types";
 
 describe("IgnoreNodeManager", function () {

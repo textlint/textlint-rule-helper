@@ -41,6 +41,10 @@ Return true if `node` is wrapped any one of node `types`.
 - the node is under the Paragraph node
 - the node is not under the BlockQuote
 
+**Params**
+
+- node `TxtNode` - is target node
+
 This function is useful for the common use case.
 
 If you want to lint Str node, but you do not want to lint styled node, this function is useful.
@@ -71,9 +75,9 @@ Return false
 [^footnote text]
 ```
 
-**Params**
+use case
 
-- node `TxtNode` - is target node
+- [refactor: use isPlainStrNode helper by azu · Pull Request #29 · textlint-ja/textlint-rule-preset-ja-spacing](https://github.com/textlint-ja/textlint-rule-preset-ja-spacing/pull/29)
 
 ### class IgnoreNodeManager
 
