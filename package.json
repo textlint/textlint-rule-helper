@@ -45,5 +45,13 @@
   "peerDependencies": {
     "@textlint/types": "^12.1.0",
     "@textlint/ast-node-types": "^12.1.0"
+  },
+  "peerDependenciesMeta": {
+    "@textlint/types": {
+      "optional": true
+    },
+    "@textlint/ast-node-types": {
+      "optional": true
+    }
   }
 }
