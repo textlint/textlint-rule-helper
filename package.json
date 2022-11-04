@@ -26,7 +26,8 @@
   },
   "dependencies": {
     "structured-source": "^3.0.2",
-    "unist-util-visit": "^2.0.3"
+    "unist-util-visit": "^2.0.3",
+    "@textlint/ast-node-types": "^12.1.0"
   },
   "devDependencies": {
     "@textlint/types": "^12.1.0",
@@ -43,14 +44,10 @@
     "typescript": "^4.5.4"
   },
   "peerDependencies": {
-    "@textlint/types": "^12.1.0",
-    "@textlint/ast-node-types": "^12.1.0"
+    "@textlint/types": "^12.1.0"
   },
   "peerDependenciesMeta": {
     "@textlint/types": {
-      "optional": true
-    },
-    "@textlint/ast-node-types": {
       "optional": true
     }
   }

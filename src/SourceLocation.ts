@@ -1,7 +1,7 @@
 // LICENSE : MIT
 "use strict";
 import SourceCode from "structured-source";
-import { TextlintRuleErrorPadding } from "@textlint/types";
+import type { TextlintRuleErrorPadding } from "@textlint/types";
 import { AnyTxtNode } from "@textlint/ast-node-types";
 
 export class SourceLocation {

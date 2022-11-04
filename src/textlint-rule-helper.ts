@@ -1,4 +1,4 @@
-import { TextlintRuleContext } from "@textlint/types"
+import type { TextlintRuleContext } from "@textlint/types"
 import { ASTNodeTypes, TxtNode } from "@textlint/ast-node-types"
 
 /**
