@@ -1,6 +1,6 @@
 {
   "name": "textlint-rule-helper",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "A helper library for textlint rule.",
   "homepage": "https://github.com/textlint/textlint-rule-helper/",
   "bugs": {
