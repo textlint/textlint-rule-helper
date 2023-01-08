@@ -1,7 +1,7 @@
 // MIT © 2018 azu
 "use strict";
 import { AnyTxtNode, TxtNodeType } from "@textlint/ast-node-types";
-import { TextlintRuleContext, TextlintRuleError, TextlintRuleReportHandler } from "@textlint/types";
+import type { TextlintRuleContext, TextlintRuleError, TextlintRuleReportHandler } from "@textlint/types";
 import RuleHelper from "./textlint-rule-helper";
 import IgnoreNodeManager from "./IgnoreNodeManager";
 import { SourceLocation } from "./SourceLocation";
