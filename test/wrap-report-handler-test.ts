@@ -1,16 +1,10 @@
 // LICENSE : MIT
 import assert from 'assert'
-import { TextlintKernel, TextlintRuleModule } from "@textlint/kernel"
-import markdown from "@textlint/textlint-plugin-markdown"
 import { StructuredSource } from "structured-source"
 import { wrapReportHandler } from "../src";
 import { AnyTxtNode, ASTNodeTypes } from "@textlint/ast-node-types";
-
-const builtInPlugins = [{
-    pluginId: "markdown",
-    plugin: markdown
-}];
-
+import { TextlintKernel, TextlintRuleModule } from "@textlint/kernel"
+import { builtInPlugins } from "./textlint-helper";
 describe("wrapReportHandler", function () {
     describe("ignoreNodeTypes", () => {
         it("should just ignore node", () => {
