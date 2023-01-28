@@ -25,23 +25,21 @@
     "watch": "tsc -p . --watch"
   },
   "dependencies": {
-    "@textlint/ast-node-types": "^12.3.0",
+    "@textlint/ast-node-types": "^13.0.2",
     "structured-source": "^4.0.0",
     "unist-util-visit": "^2.0.3"
   },
   "devDependencies": {
     "@textlint/ast-node-types": "^12.1.0",
-    "@textlint/kernel": "^12.5.0",
-    "@textlint/textlint-plugin-markdown": "^12.5.0",
-    "@textlint/types": "^12.5.0",
+    "@textlint/kernel": "^13.0.2",
+    "@textlint/textlint-plugin-markdown": "^13.0.2",
+    "@textlint/types": "^13.0.2",
     "@types/mocha": "^10.0.1",
     "@types/node": "^18.11.18",
-    "@types/structured-source": "^3.0.0",
     "markdown-to-ast": "^6.0.3",
     "mocha": "^10.2.0",
     "ts-node": "^10.9.1",
     "ts-node-test-register": "^10.0.0",
-    "txt-ast-traverse": "^2.0.4",
     "typescript": "^4.9.4"
   }
 }
