@@ -85,7 +85,8 @@ export default class IgnoreNodeManager {
      */
     ignoreChildrenByTypes(targetNode: TxtNode | TxtParentNode, ignoredNodeTypes: TxtNodeType[]) {
         visit(targetNode, (visitedNode) => {
-            if (ignoredNodeTypes.indexOf(visitedNode.type) !== -1) {
+            // @ts-expect-error: type is TxtNodeType
+            if (ignoredNodeTypes.includes(visitedNode.type)) {
                 this.ignore(visitedNode as TxtNode | TxtParentNode);
             }
         });
