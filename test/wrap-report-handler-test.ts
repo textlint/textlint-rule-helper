@@ -12,6 +12,7 @@ describe("wrapReportHandler", function () {
             const rule: TextlintRuleModule = function (context) {
                 const { RuleError } = context;
                 return wrapReportHandler(context, {
+                    // @ts-expect-error
                     ignoreNodeTypes: Object.keys(ASTNodeTypes).concat("my-type")
                 }, report => {
                     return {
