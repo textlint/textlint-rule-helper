@@ -1,11 +1,53 @@
 // LICENSE : MIT
 import assert from 'assert'
 import { IgnoreNodeManager } from "../src/index";
-import { TxtNodeType, TxtParentNode } from "@textlint/ast-node-types";
+import { TxtNode, TxtNodeType, TxtParentNode } from "@textlint/ast-node-types";
 import { TextlintKernel, TextlintRuleModule } from "@textlint/kernel"
 import { builtInPlugins } from "./textlint-helper";
 
 describe("IgnoreNodeManager", function () {
+    describe("#isIgnored()", () => {
+        it("should ignore multiple nodes", () => {
+            const ignoreManager = new IgnoreNodeManager();
+            const outerNode: TxtNode = {
+                type: "Str",
+                range: [0, 1],
+                loc: {
+                    start: {
+                        line: 1,
+                        column: 1
+                    },
+                    end: {
+                        line: 1,
+                        column: 2
+                    }
+                },
+                raw: "t",
+            }
+            const testNode: TxtNode = {
+                type: "Str",
+                range: [2, 5],
+                loc: {
+                    start: {
+                        line: 1,
+                        column: 3
+                    },
+                    end: {
+                        line: 1,
+                        column: 6
+                    }
+                },
+                raw: "test",
+            }
+            // 0 1 2 3 4 5 6 7 8 9
+            //     ^ ^ ^
+            // 5(endIndex) is not included
+            ignoreManager.ignoreRange(testNode.range);
+            // Should ignore:
+            assert.ok(ignoreManager.isIgnored(testNode));
+            assert.ok(ignoreManager.isIgnored(outerNode) === false);
+        });
+    });
     describe("#isIgnoredRange()", () => {
         it("should ignore multiple nodes", () => {
             const ignoreManager = new IgnoreNodeManager();
@@ -130,4 +172,5 @@ This is **ignored**.
             });
         });
     });
-});
+})
+;

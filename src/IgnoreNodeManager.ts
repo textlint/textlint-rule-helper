@@ -57,8 +57,7 @@ export default class IgnoreNodeManager {
      * @returns {boolean}
      */
     isIgnored(node: TxtNode | TxtParentNode) {
-        const index = node.index;
-        return this.isIgnoredIndex(index);
+        return this.isIgnoredRange(node.range);
     }
 
     /**
