@@ -246,11 +246,11 @@ You can see real use-case of this helper library.
 ```
 pnpm i --frozen-lockfile
 # watch
-pnpm watch
+pnpm run watch
 # build
-pnpm build
+pnpm run build
 # test
-pnpm test
+pnpm run test
 ```
 
 ## Contributing
