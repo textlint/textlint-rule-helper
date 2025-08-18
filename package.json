@@ -25,21 +25,21 @@
     "watch": "tsc -p . --watch"
   },
   "dependencies": {
-    "@textlint/ast-node-types": "^14.8.4",
+    "@textlint/ast-node-types": "^15.2.1",
     "structured-source": "^4.0.0",
     "unist-util-visit": "^2.0.3"
   },
   "devDependencies": {
-    "@textlint/kernel": "^14.8.4",
-    "@textlint/markdown-to-ast": "^14.8.4",
-    "@textlint/textlint-plugin-markdown": "^14.8.4",
-    "@textlint/types": "^14.8.4",
-    "@types/mocha": "^10.0.6",
-    "@types/node": "^20.14.8",
+    "@textlint/kernel": "^15.2.1",
+    "@textlint/markdown-to-ast": "^15.2.1",
+    "@textlint/textlint-plugin-markdown": "^15.2.1",
+    "@textlint/types": "^15.2.1",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.3.0",
     "mocha": "^11.7.1",
-    "ts-node": "^10.9.1",
+    "ts-node": "^10.9.2",
     "ts-node-test-register": "^10.0.0",
-    "typescript": "^5.3.2"
+    "typescript": "^5.9.2"
   },
   "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
 }
