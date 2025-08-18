@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
+      - run: corepack enable
       - name: setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
