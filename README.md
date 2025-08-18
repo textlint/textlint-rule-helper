@@ -244,12 +244,13 @@ You can see real use-case of this helper library.
 ## Development
 
 ```
+pnpm i --frozen-lockfile
 # watch
-npm run watch
+pnpm watch
 # build
-npm run build
+pnpm build
 # test
-npm run test
+pnpm test
 ```
 
 ## Contributing
