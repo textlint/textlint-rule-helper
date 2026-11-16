@@ -101,6 +101,29 @@ This is **ignored**.
                 ]);
             });
         });
+        it("should ignore the target node itself and nested nodes in pre-order", () => {
+            const ignoreManager = new IgnoreNodeManager();
+            const node: any = {
+                type: "Strong", range: [0, 30], children: [
+                    { type: "Str", range: [0, 5] },
+                    {
+                        type: "Strong", range: [5, 20], children: [
+                            { type: "Code", range: [6, 10] },
+                            { type: "Strong", range: [10, 15], children: [] }
+                        ]
+                    },
+                    { type: "Code", range: [20, 30] }
+                ]
+            };
+            ignoreManager.ignoreChildrenByTypes(node, ["Strong", "Code"]);
+            assert.deepStrictEqual(ignoreManager.ignoredRanges, [
+                [0, 30],
+                [5, 20],
+                [6, 10],
+                [10, 15],
+                [20, 30]
+            ]);
+        });
         it("should ignore range by index", () => {
             const text = "123`456`789";
             const expectedList: { name: string; ignored: boolean; actual?: boolean }[] = [

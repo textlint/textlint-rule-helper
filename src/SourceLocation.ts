@@ -5,10 +5,20 @@ import type { TextlintRuleErrorDetails } from "@textlint/types";
 import { AnyTxtNode } from "@textlint/ast-node-types";
 
 export class SourceLocation {
-    private source: StructuredSource;
+    private text: string;
+    private _source: StructuredSource | undefined;
 
     constructor(text: string) {
-        this.source = new StructuredSource(text);
+        this.text = text;
+    }
+
+    // StructuredSource builds a line index of the whole text.
+    // Create it on first use, because only `{ line }` padding needs it.
+    private get source(): StructuredSource {
+        if (this._source === undefined) {
+            this._source = new StructuredSource(this.text);
+        }
+        return this._source;
     }
 
     toAbsoluteLocation(node: AnyTxtNode, padding: TextlintRuleErrorDetails) {
