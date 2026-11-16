@@ -26,8 +26,7 @@
   },
   "dependencies": {
     "@textlint/ast-node-types": "^15.2.1",
-    "structured-source": "^4.0.0",
-    "unist-util-visit": "^2.0.3"
+    "structured-source": "^4.0.0"
   },
   "devDependencies": {
     "@textlint/kernel": "^15.2.1",

@@ -14,9 +14,6 @@ importers:
       structured-source:
         specifier: ^4.0.0
         version: 4.0.0
-      unist-util-visit:
-        specifier: ^2.0.3
-        version: 2.0.3
     devDependencies:
       '@textlint/kernel':
         specifier: ^15.2.1
@@ -661,9 +658,6 @@ packages:
 
   unist-util-visit-parents@3.1.1:
     resolution: {integrity: sha512-1KROIZWo6bcMrZEwiH2UrXDyalAa0uqzWCxCJj6lPOvTve2WkfgCytoDTPaMnodXh1WrXOq0haVYHj99ynJlsg==}
-
-  unist-util-visit@2.0.3:
-    resolution: {integrity: sha512-iJ4/RczbJMkD0712mGktuGpm/U4By4FfDonL7N/9tATGIF4imikjOuagyMY53tnZq3NP6BcmlrHhEKAfGWjh7Q==}
 
   v8-compile-cache-lib@3.0.1:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==}
@@ -1413,12 +1407,6 @@ snapshots:
     dependencies:
       '@types/unist': 2.0.11
       unist-util-is: 4.1.0
-
-  unist-util-visit@2.0.3:
-    dependencies:
-      '@types/unist': 2.0.11
-      unist-util-is: 4.1.0
-      unist-util-visit-parents: 3.1.1
 
   v8-compile-cache-lib@3.0.1: {}
 

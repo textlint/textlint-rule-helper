@@ -1,6 +1,5 @@
 // LICENSE : MIT
 "use strict";
-import visit from "unist-util-visit";
 import { TxtNode, TxtNodeRange, TxtNodeType, TxtParentNode } from "@textlint/ast-node-types"
 
 /**
@@ -37,10 +36,14 @@ export default class IgnoreNodeManager {
      * @returns {boolean}
      */
     isIgnoredIndex(index: number) {
-        return this._ignoredRangeList.some(range => {
-            const [start, end] = range;
-            return start <= index && index < end;
-        })
+        const ranges = this._ignoredRangeList;
+        for (let i = 0; i < ranges.length; i++) {
+            const range = ranges[i];
+            if (range[0] <= index && index < range[1]) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -83,11 +86,18 @@ export default class IgnoreNodeManager {
      * @param {string[]} ignoredNodeTypes
      */
     ignoreChildrenByTypes(targetNode: TxtNode | TxtParentNode, ignoredNodeTypes: TxtNodeType[]) {
-        visit(targetNode, (visitedNode) => {
-            // @ts-expect-error: type is TxtNodeType
+        // Visit `targetNode` and all its descendants in pre-order, like unist-util-visit
+        const visit = (visitedNode: TxtNode | TxtParentNode): void => {
             if (ignoredNodeTypes.includes(visitedNode.type)) {
-                this.ignore(visitedNode as TxtNode | TxtParentNode);
+                this.ignore(visitedNode);
             }
-        });
+            const children = (visitedNode as TxtParentNode).children;
+            if (children) {
+                for (let i = 0; i < children.length; i++) {
+                    visit(children[i]);
+                }
+            }
+        };
+        visit(targetNode);
     }
 }

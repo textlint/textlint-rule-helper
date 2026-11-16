@@ -1,5 +1,9 @@
 import type { TextlintRuleContext } from "@textlint/types"
-import { ASTNodeTypes, TxtNode } from "@textlint/ast-node-types"
+import { ASTNodeTypes, TxtNode, TxtParentNode } from "@textlint/ast-node-types"
+import { includesType } from "./includes-type";
+
+// Read the node types once. `ASTNodeTypes` is re-exported with a getter.
+const { Str, Paragraph, BlockQuote } = ASTNodeTypes;
 
 /**
  * RuleHelper is helper class for textlint.
@@ -40,15 +44,16 @@ export default class RuleHelper {
      * @returns {boolean}
      */
     isChildNode(node: TxtNode, types: string[]) {
-        const parents = this.getParents(node);
-        const parentsTypes = parents.map(function (parent) {
-            return parent.type;
-        });
-        return types.some(function (type) {
-            return parentsTypes.some(function (parentType) {
-                return parentType === type;
-            });
-        });
+        // Walk up the parents without creating intermediate arrays.
+        // This method is called for many nodes, so it should not allocate.
+        let parent: TxtParentNode | undefined = node.parent;
+        while (parent != null) {
+            if (includesType(types, parent.type)) {
+                return true;
+            }
+            parent = parent.parent;
+        }
+        return false;
     }
 
     /**
@@ -91,17 +96,22 @@ export default class RuleHelper {
      * @param node
      */
     isPlainStrNode(node: TxtNode): boolean {
-        if (node.type !== ASTNodeTypes.Str) {
+        if (node.type !== Str) {
             return false;
         }
-        if (node.parent?.type !== ASTNodeTypes.Paragraph) {
+        if (node.parent?.type !== Paragraph) {
             return false;
         }
 
-        const isInUncontrollableNode = this.isChildNode(node, [
-            // <blockquote> is Block node in html. It can has Pragaraph node as children
-            ASTNodeTypes.BlockQuote
-        ]);
-        return !isInUncontrollableNode
+        // <blockquote> is Block node in html. It can has Pragaraph node as children
+        // Same as `!this.isChildNode(node, [ASTNodeTypes.BlockQuote])`, without allocating the types array.
+        let parent: TxtParentNode | undefined = node.parent;
+        while (parent != null) {
+            if (parent.type === BlockQuote) {
+                return false;
+            }
+            parent = parent.parent;
+        }
+        return true;
     }
 }
